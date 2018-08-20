@@ -15,6 +15,14 @@ ActiveRecord::Schema.define(version: 2018_08_20_153813) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "talents", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_talents_on_user_id"
+  end
+
   create_table "experiences", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -64,10 +72,12 @@ ActiveRecord::Schema.define(version: 2018_08_20_153813) do
     t.string "first_name"
     t.string "last_name"
     t.string "city"
+
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "talents", "users"
   add_foreign_key "experiences", "users"
   add_foreign_key "jobs", "talents"
   add_foreign_key "jobs", "users"
