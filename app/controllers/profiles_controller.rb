@@ -6,11 +6,12 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    authorize current_user
   end
 
   def edit
     @user = User.find(params[:id])
-    authorize current_user
+    authorize @current_user if @user == current_user
   end
 
   def update
