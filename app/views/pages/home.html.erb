@@ -11,11 +11,13 @@
 <% else %>
   <!-- Login link (when logged out) -->
   <div class="wrapper">
-    <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'Home_banner-R0000393.JPG'%>);">
+    <div class="banner" style="background-image: linear-gradient(-225deg, rgba(239, 248, 248, 0.4) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'Home_banner-R0000393.JPG'%>);">
       <div class="banner-content">
-        <h1>Welcome to Twerk</h1>
-        <p>Find & book a Music Pro</p>
-        <a class="btn btn-primary btn-lg">Join now</a>
+        <h1>This is <span class="green">twerk</span></h1>
+        <p>Find & book a Music Professional</p>
+        <%= link_to new_user_session_path, class: "btn btn-success btn-lg" do %>
+          <span>Join now</span>
+        <% end %>
       </div>
     </div>
   </div>
