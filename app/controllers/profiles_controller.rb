@@ -6,6 +6,11 @@ class ProfilesController < ApplicationController
     @users = User.all
   end
 
+  def search
+    authorize current_user
+    @results = index
+  end
+
   def show
     authorize current_user
   end
