@@ -14,4 +14,6 @@ class User < ApplicationRecord
 
   has_many :talents, dependent: :destroy
 
+  mount_uploader :avatar, PhotoUploader
+
 end

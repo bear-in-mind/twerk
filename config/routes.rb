@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get "profiles/:id", to: "profiles#show", as: :show_profile
-  get 'profiles/:id/edit', to: 'profiles#edit', as: :edit_profile
+  get 'profiles/:id/edit', to: 'profiles#edit', as: :user
+  patch 'profiles/:id', to: 'profiles#update', as: :edit_profile
 
   resources :talents, only: [:new, :create, :edit, :update, :destroy]
   resources :reviews, only: [ :new, :create]
