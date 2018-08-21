@@ -2,9 +2,19 @@
 
 <div class="wrapper">
   <div class="container">
-    <h1><%= current_user.first_name %> - <%= current_user.last_name %></h1>
-    <h2><%= current_user.email %></h2>
+    <% if @user.avatar.filename.nil? %>
+      <%= image_tag "noprofilepicture.png", height: 300, width: 400 %>
+    <% else  %>
+      <%= cl_image_tag @user.avatar, height: 300, width: 400, crop: :fill %>
+    <% end  %>
+    <h1> First Name: <%= @user.first_name %></h1>
+    <h1> Last Name: <%= @user.last_name %></h1>
+    <h2> Email address: <%= @user.email %></h2>
+    <h2> City: <%= @user.city %></h2>
   </div>
 </div>
 
 
+<% if current_user.id == @user.id %>
+  <%= link_to "Edit Profile", edit_profile_path %>
+<% end %>
