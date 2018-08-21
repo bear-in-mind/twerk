@@ -17,54 +17,54 @@ User.create!(
   first_name: "Maxime",
   last_name: "Garoute",
   city: "Paris",
-  email: Faker::Internet.unique.email
-  password: "0123456"
-  avatar: ""
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/maxime"
 )
 
 User.create!(
   first_name: "Nicolas",
   last_name: "Bauguil",
   city: "Paris",
-  email: Faker::Internet.unique.email
-  password: "0123456"
-  avatar: ""
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/bo"
 )
 
 User.create!(
   first_name: "Louis",
   last_name: "Sommer",
   city: "Paris",
-  email: Faker::Internet.unique.email
-  password: "0123456"
-  avatar: ""
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/louis.jpg"
 )
 
 User.create!(
   first_name: "Benjamin",
   last_name: "Diamond",
   city: "Paris",
-  email: Faker::Internet.unique.email
-  password: "0123456"
-  avatar: ""
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/BenjaminDiamond"
 )
 
 User.create!(
   first_name: "Johann",
   last_name: "Dalgaard",
   city: "Paris",
-  email: Faker::Internet.unique.email
-  password: "0123456"
-  avatar: ""
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/johan"
 )
 
 User.create!(
   first_name: "Sebastien",
   last_name: "Teti",
   city: "Los Angeles",
-  email: Faker::Internet.unique.email
-  password: "0123456"
-  avatar: ""
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/sebastien.jpg"
 )
 
 Talent.new(name: "Bass", user_id: 3)
