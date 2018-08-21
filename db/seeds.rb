@@ -78,12 +78,12 @@ f = User.new(
 f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/sebastien.jpg"
 f.save
 
-Talent.create(name: "Bass", user_id: 3)
-Talent.create(name: "Drums", user_id: 1)
-Talent.create(name: "Guitar", user_id: 2)
-Talent.create(name: "Keyboards", user_id: 4)
-Talent.create(name: "Vocals", user_id: 5)
-Talent.create(name: "Mix Engineer", user_id: 6)
+Talent.create!(name: "Bass", user: User.find_by(first_name: "Louis"))
+Talent.create(name: "Drums", user: User.find_by(first_name: "Maxime"))
+Talent.create(name: "Guitar", user: User.find_by(first_name: "Nicolas"))
+Talent.create(name: "Keyboards", user: User.find_by(first_name: "Johann"))
+Talent.create(name: "Vocals", user: User.find_by(first_name: "Benjamin"))
+Talent.create(name: "Mix Engineer", user: User.find_by(first_name: "Sebastien"))
 
 
 puts "Done seeding!"
