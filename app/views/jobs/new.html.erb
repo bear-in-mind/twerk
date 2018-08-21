@@ -18,11 +18,12 @@
     <div ID="job-form">
       <div class="box">
         <h2>Conversation & file upload</h2>
-          <%= simple_form_for [@@job] do |f| %>
+          <%= simple_form_for @message do |f| %>
             <%= f.input :content %>
+        <h2>Upload a file - incorporate f.form and sound file Message Class</h2>
+
             <%= f.submit "Confirm message", class: "btn btn-primary" %>
           <% end %>
-        <h2>Upload a file</h2>
       </div>
     </div>
   </div>
