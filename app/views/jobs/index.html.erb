@@ -9,8 +9,8 @@
           <%= link_to '', job, class: "card-link" %>
           <div class="card-background" style="background-image: linear-gradient(rgba(60,0,0,0.25), rgba(60,0,0,0.15));"></div>
           <div class="card-description">
-            <h2><%= job.talent.user %></h2>
-            <p><%= job.price %></p>
+            <h2><%= job.talent.user.first_name.capitalize %>, <%= job.talent.user.last_name.capitalize %></h2>
+            <p><%= job.talent.name %></p>
           </div>
         </div>
       </div>
