@@ -5,3 +5,73 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Destroying records"
+User.destroy_all
+Talent.destroy_all
+User.destroy_all
+
+puts "Start seeding"
+
+User.create!(
+  first_name: "Maxime",
+  last_name: "Garoute",
+  city: "Paris",
+  email: Faker::Internet.unique.email
+  password: "0123456"
+  avatar: ""
+)
+
+User.create!(
+  first_name: "Nicolas",
+  last_name: "Bauguil",
+  city: "Paris",
+  email: Faker::Internet.unique.email
+  password: "0123456"
+  avatar: ""
+)
+
+User.create!(
+  first_name: "Louis",
+  last_name: "Sommer",
+  city: "Paris",
+  email: Faker::Internet.unique.email
+  password: "0123456"
+  avatar: ""
+)
+
+User.create!(
+  first_name: "Benjamin",
+  last_name: "Diamond",
+  city: "Paris",
+  email: Faker::Internet.unique.email
+  password: "0123456"
+  avatar: ""
+)
+
+User.create!(
+  first_name: "Johann",
+  last_name: "Dalgaard",
+  city: "Paris",
+  email: Faker::Internet.unique.email
+  password: "0123456"
+  avatar: ""
+)
+
+User.create!(
+  first_name: "Sebastien",
+  last_name: "Teti",
+  city: "Los Angeles",
+  email: Faker::Internet.unique.email
+  password: "0123456"
+  avatar: ""
+)
+
+Talent.new(name: "Bass", user_id: 3)
+Talent.new(name: "Drums", user_id: 1)
+Talent.new(name: "Guitar", user_id: 2)
+Talent.new(name: "Keyboards", user_id: 4)
+Talent.new(name: "Vocals", user_id: 5)
+Talent.new(name: "Mix Engineer", user_id: 6)
+
+puts "Done seeding!"
