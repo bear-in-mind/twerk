@@ -8,7 +8,13 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    @user.update(params[:user])
+    current_user.update(user_params)
+    redirect_to show_profile_path(params[:id])
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:last_name, :first_name, :city, :avatar)
   end
 end

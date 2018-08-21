@@ -1,7 +1,7 @@
 <h1>Profiles#edit</h1>
 <p>Find me in app/views/profiles/edit.html.erb</p>
 
-<%= simple_form_for(@user) do |f| %>
+<%= simple_form_for(@user, url: edit_profile_path) do |f| %>
   <!-- [...] -->
 
   <%= f.input :first_name, as: :text %>
