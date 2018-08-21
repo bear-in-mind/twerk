@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
-  get 'profiles/edit'
   devise_for :users
   root to: 'pages#home'
   get "profiles/:id", to: "profiles#show", as: :show_profile
