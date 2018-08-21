@@ -5,11 +5,73 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "create Users"
 
+puts "Destroying records"
 User.destroy_all
-louis = User.create!(email: 'louis@gmail.com', password: "azerty", first_name: 'Louis', last_name: 'Sommer')
-charlotte = User.create!(email: 'charlotte@gmail.com', password: "azerty", first_name: 'charlotte', last_name: 'Sommer')
-julien = User.create!(email: 'julien@gmail.com', password: "azerty", first_name: 'julien', last_name: 'Sommer')
+Talent.destroy_all
+User.destroy_all
 
-p User.all
+puts "Start seeding"
+
+User.create!(
+  first_name: "Maxime",
+  last_name: "Garoute",
+  city: "Paris",
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/maxime"
+)
+
+User.create!(
+  first_name: "Nicolas",
+  last_name: "Bauguil",
+  city: "Paris",
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/bo"
+)
+
+User.create!(
+  first_name: "Louis",
+  last_name: "Sommer",
+  city: "Paris",
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/louis.jpg"
+)
+
+User.create!(
+  first_name: "Benjamin",
+  last_name: "Diamond",
+  city: "Paris",
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/BenjaminDiamond"
+)
+
+User.create!(
+  first_name: "Johann",
+  last_name: "Dalgaard",
+  city: "Paris",
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/johan"
+)
+
+User.create!(
+  first_name: "Sebastien",
+  last_name: "Teti",
+  city: "Los Angeles",
+  email: Faker::Internet.unique.email,
+  password: "0123456",
+  avatar: "profile_pictures/sebastien.jpg"
+)
+
+Talent.new(name: "Bass", user_id: 3)
+Talent.new(name: "Drums", user_id: 1)
+Talent.new(name: "Guitar", user_id: 2)
+Talent.new(name: "Keyboards", user_id: 4)
+Talent.new(name: "Vocals", user_id: 5)
+Talent.new(name: "Mix Engineer", user_id: 6)
+
+puts "Done seeding!"
