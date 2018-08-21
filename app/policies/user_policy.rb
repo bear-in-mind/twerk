@@ -9,11 +9,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    record.user == user
+    is_user_creator?
   end
 
   def update?
-    edit?
+    is_user_creator?
   end
 
   class Scope < Scope
@@ -21,4 +21,11 @@ class UserPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  private
+
+  def is_user_creator?
+    record == user
+  end
+
 end

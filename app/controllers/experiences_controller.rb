@@ -20,8 +20,7 @@ before_action :set_experience, only: [:edit, :update, :destroy]
 
   def update
     authorize @experience
-    if @experience.update(experience_params)
-      redirect_to(show_profile_path(params[:id]))
+    redirect_to(show_profile_path(params[:id])) if @experience.update(experience_params)
   end
 
   def destroy
