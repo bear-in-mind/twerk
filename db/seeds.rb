@@ -35,7 +35,7 @@ User.create!(
   first_name: "Louis",
   last_name: "Sommer",
   city: "Paris",
-  email: louis.sommer@gmail.com,
+  email: 'louis.sommer@gmail.com',
   password: "0123456",
   avatar: "profile_pictures/louis.jpg"
 )
