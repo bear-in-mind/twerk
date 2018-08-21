@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = User.find(params[:id])
     authorize @review
+    @review.save
     redirect_to(show_profile_path(params[:id]))
   end
 
@@ -18,3 +19,4 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:rating, :content)
   end
 end
+
