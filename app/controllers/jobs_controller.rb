@@ -12,10 +12,19 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+    authorize @job
+    @user = current_user
+    # @message = Message.new
+    # to be removed:
+    suppliers = User.all
+    @supplier = suppliers[0]
+    # @supplier = @job.talent.user
   end
 
   def create
     @job = Job.new(job_params)
+    authorize @job
+
     if @job.save
       redirect_to @job
     else
@@ -30,6 +39,7 @@ class JobsController < ApplicationController
   end
 
   def job_params
+    # params.require(:job).permit(:price)
     params.require(:job).permit(:price)
   end
 end

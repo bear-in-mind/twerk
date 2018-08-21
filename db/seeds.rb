@@ -67,11 +67,11 @@ User.create!(
   avatar: "profile_pictures/sebastien.jpg"
 )
 
-Talent.new(name: "Bass", user_id: 3)
-Talent.new(name: "Drums", user_id: 1)
-Talent.new(name: "Guitar", user_id: 2)
-Talent.new(name: "Keyboards", user_id: 4)
-Talent.new(name: "Vocals", user_id: 5)
-Talent.new(name: "Mix Engineer", user_id: 6)
+Talent.create(name: "Bass", user_id: 3)
+Talent.create(name: "Drums", user_id: 1)
+Talent.create(name: "Guitar", user_id: 2)
+Talent.create(name: "Keyboards", user_id: 4)
+Talent.create(name: "Vocals", user_id: 5)
+Talent.create(name: "Mix Engineer", user_id: 6)
 
 puts "Done seeding!"
