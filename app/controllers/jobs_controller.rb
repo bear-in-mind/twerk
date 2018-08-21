@@ -14,7 +14,7 @@ class JobsController < ApplicationController
     @job = Job.new
     authorize @job
     @user = current_user
-    # @message = Message.new
+    @message = Message.new
     # to be removed:
     suppliers = User.all
     @supplier = suppliers[0]
@@ -39,7 +39,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    # params.require(:job).permit(:price)
     params.require(:job).permit(:price)
   end
 end
