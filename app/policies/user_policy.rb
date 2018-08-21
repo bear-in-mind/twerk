@@ -8,6 +8,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def search?
+    true
+  end
+
   def edit?
     is_user_creator?
   end
