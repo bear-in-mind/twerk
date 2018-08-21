@@ -20,7 +20,7 @@ a = User.create!(
   email: Faker::Internet.unique.email,
   password: "0123456",
 )
-a.remote_photo_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/maxime.jpg"
+a.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/maxime.jpg"
 
 b = User.create!(
   first_name: "Nicolas",
@@ -30,7 +30,7 @@ b = User.create!(
   password: "0123456",
 )
 
-b.remote_photo_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/bogue.jpg"
+b.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/bogue.jpg"
 
 c = User.create!(
   first_name: "Louis",
@@ -40,7 +40,7 @@ c = User.create!(
   password: "0123456",
 )
 
-c.remote_photo_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/louis.jpg"
+c.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/louis.jpg"
 
 d = User.create!(
   first_name: "Benjamin",
@@ -50,7 +50,7 @@ d = User.create!(
   password: "0123456",
 )
 
-d.remote_photo_url = "https://res.cloudinary.com/twerk/image/upload/v1534855842/profile_pictures/BenjaminDiamond.jpg"
+d.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855842/profile_pictures/BenjaminDiamond.jpg"
 
 e = User.create!(
   first_name: "Johann",
@@ -60,7 +60,7 @@ e = User.create!(
   password: "0123456",
 )
 
-e = "https://res.cloudinary.com/twerk/image/upload/v1534855790/profile_pictures/johan.jpg"
+e.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855790/profile_pictures/johan.jpg"
 
 f = User.create!(
   first_name: "Sebastien",
@@ -70,7 +70,7 @@ f = User.create!(
   password: "0123456",
 )
 
-f.remote_photo_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/sebastien.jpg"
+f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/sebastien.jpg"
 
 Talent.new(name: "Bass", user_id: 3)
 Talent.new(name: "Drums", user_id: 1)
