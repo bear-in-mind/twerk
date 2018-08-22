@@ -27,17 +27,15 @@ a.navbar-wagon-brand {
   text-decoration: none;
   color: black;
   font-size: 18px;
+  white-space: nowrap;
 }
 
 .brand {
-  position: absolute;
   color: white;
   text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-  top: 25%;
-  right: 50%;
-  margin: 0;
   font-weight: bolder;
   font-size: 24px;
+  margin-top: 10px;
 }
 
 /* User Avatar */
@@ -49,11 +47,18 @@ a.navbar-wagon-brand {
 }
 
 /* Right section */
-.navbar-wagon-right {
+.navbar-wagon-right, .navbar-wagon-left {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  width: 35vw;
 }
+.navbar-wagon-left {
+  justify-content: flex-start;
+}
+.navbar-wagon-right {
+  justify-content: flex-end;
+}
+
 
 /* Basic navbar item */
 .navbar-wagon-item {
