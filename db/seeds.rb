@@ -19,8 +19,11 @@ a = User.new(
   city: "Paris",
   email: Faker::Internet.unique.email,
   password: "0123456",
+  main_job: "Drummer",
+  bio: "I'm a French drummer with deep roots in 80s american culture. I was very influenced by artists like Peter Gabriel, Toto, Michael Jackson and Price. My band is called Venice!"
 )
 a.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/maxime.jpg"
+a.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591/banner_images/max_banner.jpg"
 a.save
 
 b = User.new(
@@ -29,9 +32,11 @@ b = User.new(
   city: "Paris",
   email: Faker::Internet.unique.email,
   password: "0123456",
+  main_job: "Guitarist"
 )
 
 b.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/bogue.jpg"
+b.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591/banner_images/bogue_banner.jpg"
 b.save
 
 c = User.new(
@@ -40,9 +45,11 @@ c = User.new(
   city: "Paris",
   email: 'louis.sommer@gmail.com',
   password: "0123456",
+  main_job: "Producer"
 )
 
 c.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/louis.jpg"
+c.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/louis.jpg"
 c.save
 
 d = User.new(
@@ -51,6 +58,7 @@ d = User.new(
   city: "Paris",
   email: Faker::Internet.unique.email,
   password: "0123456",
+  main_job: "Artist"
 )
 
 d.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855842/profile_pictures/BenjaminDiamond.jpg"
@@ -62,9 +70,11 @@ e = User.new(
   city: "Paris",
   email: Faker::Internet.unique.email,
   password: "0123456",
+  main_job: "Keyboardist"
 )
 
 e.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855790/profile_pictures/johan.jpg"
+e.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591/banner_images/johan_banner.jpg"
 e.save
 
 f = User.new(
@@ -73,16 +83,31 @@ f = User.new(
   city: "Los Angeles",
   email: Faker::Internet.unique.email,
   password: "0123456",
+  main_job: "Mixing Engineer"
 )
 
 f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/sebastien.jpg"
+f.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591/banner_images/seb_banner.jpg"
 f.save
 
 Talent.create!(name: "Bass", user: User.find_by(first_name: "Louis"))
+Talent.create!(name: "Arranger", user: User.find_by(first_name: "Louis"))
+Talent.create!(name: "Clarinet", user: User.find_by(first_name: "Louis"))
+Talent.create!(name: "Bass Clarinet", user: User.find_by(first_name: "Louis"))
+Talent.create!(name: "Keyboards", user: User.find_by(first_name: "Louis"))
+Talent.create!(name: "Ableton Live, Pro Tools", user: User.find_by(first_name: "Louis"))
 Talent.create(name: "Drums", user: User.find_by(first_name: "Maxime"))
+Talent.create(name: "Percussions", user: User.find_by(first_name: "Maxime"))
+Talent.create(name: "Producer", user: User.find_by(first_name: "Maxime"))
 Talent.create(name: "Guitar", user: User.find_by(first_name: "Nicolas"))
+Talent.create(name: "Keyboards", user: User.find_by(first_name: "Nicolas"))
+Talent.create(name: "Producer", user: User.find_by(first_name: "Nicolas"))
 Talent.create(name: "Keyboards", user: User.find_by(first_name: "Johann"))
+Talent.create(name: "Accordeon", user: User.find_by(first_name: "Johann"))
+Talent.create(name: "Arranger", user: User.find_by(first_name: "Johann"))
 Talent.create(name: "Vocals", user: User.find_by(first_name: "Benjamin"))
-Talent.create(name: "Mix Engineer", user: User.find_by(first_name: "Sebastien"))
+Talent.create(name: "Producer", user: User.find_by(first_name: "Benjamin"))
+Talent.create(name: "FOH Engineer", user: User.find_by(first_name: "Sebastien"))
+Talent.create(name: "Recording Engineer", user: User.find_by(first_name: "Sebastien"))
 
 puts "Done seeding!"

@@ -1,0 +1,99 @@
+.wrapper-profile {
+  background-color: #E9EBEE;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+}
+
+.container {
+  position: absolute;
+  top: 200px;
+  left: 170px;
+}
+
+.profile-button {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.banner-profile {
+  background-color: white;
+  height: 30vh;
+  width: 70%;
+}
+
+.box {
+  padding: 20px;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  width: auto;
+  height: 160px;
+}
+
+.bio {
+  text-align: justify;
+}
+
+.skills {
+  height: auto;
+}
+
+.values {
+  font-weight: normal;
+}
+
+.albums {
+  img {
+    margin: 0px 10px;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.album-box {
+  height: 250px !important;
+}
+.request {
+  height: 50px;
+  position: absolute;
+  right: 50px;
+  bottom: 10px;
+}
+
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 18px;
+  margin-top: 5px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+}
+
+h4 {
+  font-weight: lighter;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 5px
+}
+
+p {
+  font-size: 14;
+  font-weight: lighter;
+  color: rgba(0, 0, 0, 0.8);
+}

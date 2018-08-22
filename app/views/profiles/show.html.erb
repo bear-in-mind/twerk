@@ -1,16 +1,61 @@
-<h1>My Profile</h1>
+<div class="wrapper-profile">
+  <div class="banner-profile">
+    <%= cl_image_tag @user.banner.url(:banner_image) %>
+  </div>
 
-<div class="wrapper">
   <div class="container">
-    <% if @user.avatar.filename.nil? %>
-      <%= image_tag "noprofilepicture.png", height: 300, width: 400 %>
-    <% else  %>
-      <%= cl_image_tag @user.avatar, height: 300, width: 400, crop: :fill %>
-    <% end  %>
-    <h1> First Name: <%= @user.first_name %></h1>
-    <h1> Last Name: <%= @user.last_name %></h1>
-    <h2> Email address: <%= @user.email %></h2>
-    <h2> City: <%= @user.city %></h2>
+    <div class="profile-button">
+      <% if @user.avatar.filename.nil? %>
+        <%= image_tag "noprofilepicture.png", height: 300, width: 400 %>
+      <% else  %>
+        <%= cl_image_tag @user.avatar.url(:profile_picture), class: "profile-pic" %>
+      <% end  %>
+
+      <%= link_to new_job_path, class: "btn btn-success btn-lg request" do %>
+        <span>Send a request</span>
+      <% end %>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-3">
+        <div class="box">
+          <h1><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}"%></h1>
+          <h4> Main skill : <span class="values"><%= @user.talents.first.name.capitalize %></span></h4>
+          <h4> Based in <span class="values"><%= @user.city.capitalize %></span></h4>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="box bio">
+          <h2>Bio :</h2>
+          <p>"<%= @user.bio %>"</p>
+        </div>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="box skills">
+          <h2>Skills :</h2>
+          <ul>
+            <% @user.talents.each do |talent| %>
+              <li><h4><%= talent.name %></h4></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-xs-offset-2 col-xs-8">
+        <div class="box text-center album-box">
+          <h2>Albums :</h2>
+            <div class="albums">
+              <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936368/album_covers/quidenousdeux.jpg", height: 150, width: 150, border: '2px_solid_black') %>
+              <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/pills.jpg", height: 150, width: 150, border: '2px_solid_black') %>
+              <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/ours.jpg", height: 150, width: 150, border: '2px_solid_black') %>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
