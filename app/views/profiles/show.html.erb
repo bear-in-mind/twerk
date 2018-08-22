@@ -3,63 +3,66 @@
     <%= cl_image_tag @user.banner.url(:banner_image) %>
   </div>
 
-  <div class="container">
-    <div class="profile-button">
-      <% if @user.avatar.filename.nil? %>
-        <%= image_tag "noprofilepicture.png", height: 300, width: 400 %>
-      <% else  %>
-        <%= cl_image_tag @user.avatar.url(:profile_picture), class: "profile-pic" %>
-      <% end  %>
+  <div class="profile-page">
+    <div class="container">
+      <div class="profile-button">
+        <% if @user.avatar.filename.nil? %>
+          <%= image_tag "noprofilepicture.png", height: 300, width: 400 %>
+        <% else  %>
+          <%= cl_image_tag @user.avatar.url(:profile_picture), class: "profile-pic" %>
+        <% end  %>
 
-      <%= link_to new_job_path, class: "btn btn-success btn-lg request" do %>
-        <span>Send a request</span>
-      <% end %>
-    </div>
-
-    <div class="row">
-
-      <div class="col-xs-3">
-        <div class="box2 profile-content">
-          <h1 class="name"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}"%></h1>
-          <h4> Main skill : <span class="values"><%= @user.talents.first.name.capitalize %></span></h4>
-          <h4> Based in <span class="values"><%= @user.city.capitalize %></span></h4>
-        </div>
+  <!--       link_to new_job_path, class: "btn btn-success btn-lg request" do
+   -->      <%= link_to "", class: "btn btn-success btn-lg request" do %>
+          <span>Send a request</span>
+        <% end %>
       </div>
 
-      <div class="col-xs-6">
-        <div class="box2 bio profile-content">
-          <h2 class="box-title">Bio :</h2>
-          <p>"<%= @user.bio %>"</p>
-        </div>
-      </div>
+      <div class="row">
 
-      <div class="col-xs-3">
-        <div class="box2 skills profile-content">
-          <h2>Skills :</h2>
-          <ul class="skills-list">
-            <% @user.talents.each do |talent| %>
-              <li><h4><%= talent.name %></h4></li>
+        <div class="col-xs-3">
+          <div class="box2 profile-content">
+            <h1 class="name"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}"%></h1>
+            <h4> Main skill : <span class="values"><%= @user.talents.first.name.capitalize %></span></h4>
+            <h4> Based in <span class="values"><%= @user.city.capitalize %></span></h4>
+            <% if current_user.id == @user.id %>
+              <h4 class="edit-profile"><%= link_to "Edit Profile", user_path %></h4>
             <% end %>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-xs-offset-2 col-xs-8">
-        <div class="box2 text-center album-box profile-content">
-          <h2>Albums :</h2>
-            <div class="albums">
-              <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936368/album_covers/quidenousdeux.jpg", height: 150, width: 150, border: '2px_solid_black') %>
-              <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/pills.jpg", height: 150, width: 150, border: '2px_solid_black') %>
-              <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/ours.jpg", height: 150, width: 150, border: '2px_solid_black') %>
           </div>
         </div>
-      </div>
 
+        <div class="col-xs-6">
+          <div class="box2 bio profile-content">
+            <h2 class="box-title">Bio :</h2>
+            <p>"<%= @user.bio %>"</p>
+          </div>
+        </div>
+
+        <div class="col-xs-3">
+          <div class="box2 skills profile-content">
+            <h2>Skills :</h2>
+            <ul class="skills-list">
+              <% @user.talents.each do |talent| %>
+                <li><h4><%= talent.name %></h4></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-xs-offset-2 col-xs-8">
+          <div class="box2 text-center album-box profile-content">
+            <h2>Albums :</h2>
+              <div class="albums">
+                <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936368/album_covers/quidenousdeux.jpg", height: 150, width: 150, border: '2px_solid_black') %>
+                <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/pills.jpg", height: 150, width: 150, border: '2px_solid_black') %>
+                <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/ours.jpg", height: 150, width: 150, border: '2px_solid_black') %>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
 
 
-<% if current_user.id == @user.id %>
-  <%= link_to "Edit Profile", user_path %>
-<% end %>

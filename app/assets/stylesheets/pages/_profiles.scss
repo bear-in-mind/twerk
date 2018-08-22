@@ -9,7 +9,7 @@
   height: 100vh;
 }
 
-.container {
+.profile-page {
   position: absolute;
   top: 175px;
   left: 150px;
@@ -24,6 +24,15 @@
   top: 20px;
   img {
 
+  }
+}
+
+h4.edit-profile {
+  a {
+    color: $green;
+  }
+  a:hover {
+    font-weight: 400;
   }
 }
 
@@ -121,11 +130,9 @@ p {
   color: rgba(0, 0, 0, 0.8);
 }
 
-.skills-list {
-  ul {
+ul.skills-list {
   list-style: none;
   padding: 0;
-  }
 }
 
 
