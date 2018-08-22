@@ -1,20 +1,29 @@
-<h1>Jobs#index</h1>
-<p>Find me in app/views/jobs/index.html.erb</p>
+<h1>My Jobs</h1>
 
 <div class="container">
+  <h3> My Jobs as supplier </h3>
   <div class="row">
-      <% @jobs.each do |job| %>
+      <% @jobs_as_supplier.each do |job| %>
       <div class="col-xs-12 col-sm-4">
         <div class="card">
-          <%= link_to '', job, class: "card-link" %>
-          <div class="card-background" style="background-image: linear-gradient(rgba(60,0,0,0.25), rgba(60,0,0,0.15));"></div>
-          <div class="card-description">
-            <h2><%= job.talent.user.first_name.capitalize %>, <%= job.talent.user.last_name.capitalize %></h2>
-            <p><%= job.talent.name %></p>
-          </div>
+          <h2><%= job.talent.user.first_name.capitalize %>, <%= job.talent.user.last_name.capitalize %></h2>
+          <p><%= job.talent.name %></p>
         </div>
       </div>
       <% end %>
   </div>
 </div>
 
+<div class="container">
+  <h3> My Jobs as client </h3>
+  <div class="row">
+      <% @jobs_as_client.each do |job| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <h2><%= job.talent.user.first_name.capitalize %>, <%= job.talent.user.last_name.capitalize %></h2>
+          <p><%= job.talent.name %></p>
+        </div>
+      </div>
+      <% end %>
+  </div>
+</div>

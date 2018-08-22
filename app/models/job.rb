@@ -1,7 +1,7 @@
 class Job < ApplicationRecord
   belongs_to :user
   belongs_to :talent
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   validates :price, presence: true
   validates :user_id, presence: true

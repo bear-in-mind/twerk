@@ -1,7 +1,9 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show]
+
   def index
-    @jobs = Job.all
+    @jobs_as_client = current_user.jobs
+    @jobs_as_supplier = current_user.talents.jobs
   end
 
   def show
