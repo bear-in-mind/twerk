@@ -111,4 +111,6 @@ Talent.create(name: "Producer", user: User.find_by(first_name: "Benjamin"))
 Talent.create(name: "FOH Engineer", user: User.find_by(first_name: "Sebastien"))
 Talent.create(name: "Recording Engineer", user: User.find_by(first_name: "Sebastien"))
 
+Job.create!(talent_id: Talent.find_by(name: "Drums").id, user_id: User.find_by(first_name: "Louis").id)
+
 puts "Done seeding!"
