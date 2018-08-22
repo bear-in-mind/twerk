@@ -1,10 +1,21 @@
 <% if user_signed_in? %>
   <!-- Links when logged in -->
   <div class="wrapper">
-    <div class="banner" style="background-image: linear-gradient(-225deg, rgba(239, 248, 248, 0.4)
- 0%, rgba(0,36,61,0.8) 50%), url(<%= image_path 'Home_banner-R0000393.JPG'%>);">
+    <div class="banner" style="background-image: linear-gradient(-225deg, rgba(239, 248, 248, 0.4), rgba(0,36,61,0.8) 50%), url(<%= image_path 'Home_banner-R0000393.JPG'%>);">
       <div class="banner-content">
-        <h1>What are you looking for ?</h1>
+        <h2>What are you looking for today ?</h2>
+        <div class="search-wrapper">
+          <form " action="/profiles" method="get" id="home-search-bar">
+            <div class="inline-input">
+              <input type="text" placeholder="Search by artist, album, talent..." class="form-control" id="home-search-query">
+              <span >
+                <button name="button" type="submit" class="btn btn-success" id="home-search-submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
