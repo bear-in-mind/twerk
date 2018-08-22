@@ -1,20 +1,20 @@
-.job-card {
-  position: relative;
-  height: 50vh;
-  border-radius: 4px;
-  margin-bottom: 30px;
-  color: black;
-  overflow: hidden;
-  background-color:
-  &:hover {
-    .card-background {
-      transform: scale(1.02);
-    }
-    .card-link {
-      opacity: 0.3;
-    }
-    .card-description {
-      text-shadow: 0 1px 4px rgba(60,0,0,0.5);
-    }
-  }
-}
+// .job-card {
+//   position: relative;
+//   height: 50vh;
+//   border-radius: 4px;
+//   margin-bottom: 30px;
+//   color: black;
+//   overflow: hidden;
+//   background-color:
+//   &:hover {
+//     .card-background {
+//       transform: scale(1.02);
+//     }
+//     .card-link {
+//       opacity: 0.3;
+//     }
+//     .card-description {
+//       text-shadow: 0 1px 4px rgba(60,0,0,0.5);
+//     }
+//   }
+// }
