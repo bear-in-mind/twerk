@@ -12,3 +12,27 @@
             <%= f.submit "Upload file", class: "btn btn-primary btn-block" %>
           <% end %>
       </div>
+
+
+
+      <div class="box box-pro" id="new-job-message">
+        <h3>Post a message & load a music file :</h3>
+          <%= simple_form_for [@job, @message] do |f| %>
+            <%= f.input :content, :input_html => {rows: 6, cols: 6}  %>
+            <%= cl_upload_tag(:audio_file, :resource_type => "video") %>
+            <br>
+            <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
+          <% end %>
+      </div>
+
+
+
+      <div class="box box-pro" id="new-job-message">
+        <h3>Post a message & load a music file :</h3>
+          <%= simple_form_for [@job, @message] do |f| %>
+            <%= f.input :content, :input_html => {rows: 6, cols: 6}  %>
+            <%= cl_upload_tag(:audio_file, :resource_type => "video") %>
+            <br>
+            <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
+          <% end %>
+      </div>

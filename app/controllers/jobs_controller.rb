@@ -24,7 +24,8 @@ class JobsController < ApplicationController
     @job = Job.new
     authorize @job
     @user = current_user
-    # @message = Message.new(current_user)
+    @message = Message.new
+
     # @supplier = @job.talent.user
     # to be removed (for testing only):
     suppliers = User.all
@@ -32,17 +33,25 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new[job_params]
-    if @job.save
-      redirect_to @job
-    else
-      render :new
-    end
+    @jobs_as_client = policy_scope(Job)
+    @jobs_as_supplier = policy_scope(Job)
+    raise
+    authorize current_user
+    authorize @job
+    # @job = Job.new[job_params]
+    suppliers = User.all
+    @supplier = suppliers[0]
+    redirect_to show_profile_path(@supplier)
+    # if @job.save
+    #   redirect_to @job
+    # else
+    #   render :new
+    # end
   end
 
   private
 
   def job_params
-    params.permit(:price, :file, :audio_file)
+    params.require(:job).permit(:price, :file, :audio_file)
   end
 end
