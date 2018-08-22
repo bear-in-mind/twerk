@@ -1,5 +1,6 @@
 .wrapper-profile {
-  background-color: #E9EBEE;
+  // background-color: #E9EBEE;
+  background-color: white;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -10,30 +11,74 @@
 
 .container {
   position: absolute;
-  top: 200px;
-  left: 170px;
+  top: 175px;
+  left: 150px;
 }
 
 .profile-button {
   display: flex;
   justify-content: space-between;
   position: relative;
+  padding: 10px 0px;
+  margin-bottom: 20px;
+  top: 20px;
+  img {
+
+  }
 }
 
 .banner-profile {
-  background-color: white;
+  background-color: transparent;
   height: 30vh;
   width: 70%;
 }
 
-.box {
-  padding: 20px;
+.box2 {
+  width: 80vw;
+  // margin: 16px auto;
+  box-shadow: none;
   background-color: white;
-  border-radius: 2px;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  margin: 20px;
+  border-radius: 4px;
+  // box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.1);
+  padding: 16px 40px;
+  h6 {
+    font-weight: lighter;
+  }
+  a {
+  text-decoration: none;
+  color: black;
+  }
+  margin: 0px;
+}
+
+
+// .box {
+//   padding: 20px;
+//   background-color: white;
+//   border-radius: 2px;
+//   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+//   margin: 20px;
+//   width: auto;
+// }
+
+.profile-content {
   width: auto;
   height: 160px;
+  h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  }
+  h2 {
+  font-size: 18px;
+  margin-top: 5px;
+  }
+  h4 {
+    font-weight: lighter;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 5px
+  }
 }
 
 .bio {
@@ -67,30 +112,7 @@
   bottom: 10px;
 }
 
-
-h1 {
-  font-size: 24px;
-  margin: 0;
-}
-
-h2 {
-  font-size: 18px;
-  margin-top: 5px;
-}
-
-ul.skills-list {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-}
-
-h4 {
-  font-weight: lighter;
-  font-size: 16px;
-  margin-top: 10px;
-  margin-bottom: 5px
+.box-title {
 }
 
 p {
@@ -98,3 +120,11 @@ p {
   font-weight: lighter;
   color: rgba(0, 0, 0, 0.8);
 }
+
+ul.skills-list {
+  list-style: none;
+  padding: 0;
+}
+
+
+

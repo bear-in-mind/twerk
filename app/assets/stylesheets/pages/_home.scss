@@ -26,3 +26,37 @@
 .green {
   color: $green;
 }
+
+// search bar
+
+.search-wrapper {
+  background-color: rgba(255, 255, 255,0.5);
+  border-radius: 4px;
+  padding: 40px 64px;
+  margin-top: 40px;
+}
+
+.inline-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $headers-font;
+  font-weight: lighter;
+  font-size: 14px;
+  z-index: 100;
+}
+
+#home-search-query {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 0;
+  border: none;
+}
+
+#home-search-submit {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 6px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 6px;
+}

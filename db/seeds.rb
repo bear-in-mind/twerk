@@ -110,5 +110,4 @@ Talent.create(name: "Producer", user: User.find_by(first_name: "Benjamin"))
 Talent.create(name: "FOH Engineer", user: User.find_by(first_name: "Sebastien"))
 Talent.create(name: "Recording Engineer", user: User.find_by(first_name: "Sebastien"))
 
-
 puts "Done seeding!"
