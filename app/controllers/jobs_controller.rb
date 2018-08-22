@@ -25,16 +25,22 @@ class JobsController < ApplicationController
     authorize @job
     @user = current_user
     @message = Message.new
-    # to be removed:
+    # @supplier = @job.talent.user
+    # to be removed (for testing only):
     suppliers = User.all
     @supplier = suppliers[0]
-    # @supplier = @job.talent.user
   end
 
   def create
-    @job = Job.new(job_params)
-    authorize @job
+    @job = Job.new[job_params]
+    # authorize current_user
+    if params[:file].present?
+      preloaded = Cloudinary::PreloadedFile.new(params[:file])
+      raise "Invalid upload signature" if !preloaded.valid?
+      @job.audio_file = preloaded.identifier
+    end
 
+    raise
     if @job.save
       redirect_to @job
     else
@@ -45,6 +51,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:price)
+    params.permit(:price, :file, :audio_file)
   end
 end

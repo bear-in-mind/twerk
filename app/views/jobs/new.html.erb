@@ -1,28 +1,38 @@
-<h1>Create a new job request</h1>
-<h2>NB: remove temp @supplier value in jobs_controller</h2>
 
 <div class="wrapper">
-  <div class="container">
-    <div class="box">
-      <div ID="profile">
-        <h2>Job Recap</h2>
-        <h3><%= @supplier.first_name.capitalize  %> <%= @supplier.last_name.capitalize %></h3>
-                <p>Job completed: <%= @job.completed %></p>
-        <p>Skills: <% @supplier.talents.each do |talent| %>
-          <%= talent.name %>
-          <% end %>
-        </p>
-
+  <div class="row">
+    <div id="new-job-form">
+      <div class="box box-pro" id="new-job-pro">
+        <div id="new-job-pro-name">
+          <h1>Create a new job request</h1>
+          <h2>NB: remove temp @supplier value in jobs_controller</h2>
+          <h3>Selected Music Pro: <%= @supplier.first_name.capitalize  %> <%= @supplier.last_name.capitalize %> </h3>
+        </div>
+        <div id="new-job-pro-talents">
+          <h3>Skills: <% @supplier.talents.each do |talent| %>
+            <%= talent.name %>
+            <% end %>
+          </h3>
+        </div>
+        <div id="new-job-pro-completion">
+          <p>Job completion status: <%= @job.completed %></p>
+        </div>
       </div>
-    </div>
-    <div ID="job-form">
-      <div class="box">
-        <h2>Conversation & file upload</h2>
-          <%= simple_form_for @message do |f| %>
-            <%= f.input :content %>
-        <h2>Upload a file - incorporate f.form and sound file Message Class</h2>
 
-            <%= f.submit "Confirm message", class: "btn btn-primary" %>
+      <div class="box box-pro" id="new-job-message">
+        <h3>Post a message :</h3>
+          <%= simple_form_for @message do |f| %>
+            <%= f.input :content, :input_html => {rows: 6, cols: 6}  %>
+            <br>
+            <%= f.submit "Confirm message", class: "btn btn-primary btn-block" %>
+          <% end %>
+      </div>
+
+      <div class="box box-pro" id="new-job-file">
+        <h3>Upload an sound file :</h3>
+          <%= simple_form_for @job do |f| %>
+            <%= cl_upload_tag(:audio_file, :resource_type => "video") %>
+            <%= f.submit "Upload file", class: "btn btn-primary btn-block" %>
           <% end %>
       </div>
     </div>
