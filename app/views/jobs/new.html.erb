@@ -1,15 +1,30 @@
-<h1>Jobs#new</h1>
-<p>Find me in app/views/jobs/new.html.erb</p>
+<h1>Create a new job request</h1>
+<h2>NB: remove temp @supplier value in jobs_controller</h2>
 
-<div class="box">
-  <h2>Job Recap</h2>
-  <h3><%= @supplier.first_name.capitalize @supplier.last_name.capitalize %></h3>
-  <p>Job completed: <%= @job.completed %></p>
-  <p><%= job.talent.name %></p>
-</div>
-<div class="box">
-  <h2>Conversation</h2>
-</div>
-<div class="box">
-  <h2>Upload a file</h2>
+<div class="wrapper">
+  <div class="container">
+    <div class="box">
+      <div ID="profile">
+        <h2>Job Recap</h2>
+        <h3><%= @supplier.first_name.capitalize  %> <%= @supplier.last_name.capitalize %></h3>
+                <p>Job completed: <%= @job.completed %></p>
+        <p>Skills: <% @supplier.talents.each do |talent| %>
+          <%= talent.name %>
+          <% end %>
+        </p>
+
+      </div>
+    </div>
+    <div ID="job-form">
+      <div class="box">
+        <h2>Conversation & file upload</h2>
+          <%= simple_form_for @message do |f| %>
+            <%= f.input :content %>
+        <h2>Upload a file - incorporate f.form and sound file Message Class</h2>
+
+            <%= f.submit "Confirm message", class: "btn btn-primary" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
 </div>

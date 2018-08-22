@@ -13,7 +13,7 @@ User.destroy_all
 
 puts "Start seeding"
 
-a = User.create!(
+a = User.new(
   first_name: "Maxime",
   last_name: "Garoute",
   city: "Paris",
@@ -21,8 +21,9 @@ a = User.create!(
   password: "0123456",
 )
 a.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/maxime.jpg"
+a.save
 
-b = User.create!(
+b = User.new(
   first_name: "Nicolas",
   last_name: "Bauguil",
   city: "Paris",
@@ -31,8 +32,9 @@ b = User.create!(
 )
 
 b.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/bogue.jpg"
+b.save
 
-c = User.create!(
+c = User.new(
   first_name: "Louis",
   last_name: "Sommer",
   city: "Paris",
@@ -41,8 +43,9 @@ c = User.create!(
 )
 
 c.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/louis.jpg"
+c.save
 
-d = User.create!(
+d = User.new(
   first_name: "Benjamin",
   last_name: "Diamond",
   city: "Paris",
@@ -51,8 +54,9 @@ d = User.create!(
 )
 
 d.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855842/profile_pictures/BenjaminDiamond.jpg"
+d.save
 
-e = User.create!(
+e = User.new(
   first_name: "Johann",
   last_name: "Dalgaard",
   city: "Paris",
@@ -61,8 +65,9 @@ e = User.create!(
 )
 
 e.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855790/profile_pictures/johan.jpg"
+e.save
 
-f = User.create!(
+f = User.new(
   first_name: "Sebastien",
   last_name: "Teti",
   city: "Los Angeles",
@@ -71,13 +76,13 @@ f = User.create!(
 )
 
 f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/sebastien.jpg"
+f.save
 
-Talent.new(name: "Bass", user_id: 3)
-Talent.new(name: "Drums", user_id: 1)
-Talent.new(name: "Guitar", user_id: 2)
-Talent.new(name: "Keyboards", user_id: 4)
-Talent.new(name: "Vocals", user_id: 5)
-Talent.new(name: "Mix Engineer", user_id: 6)
-
+Talent.create!(name: "Bass", user: User.find_by(first_name: "Louis"))
+Talent.create(name: "Drums", user: User.find_by(first_name: "Maxime"))
+Talent.create(name: "Guitar", user: User.find_by(first_name: "Nicolas"))
+Talent.create(name: "Keyboards", user: User.find_by(first_name: "Johann"))
+Talent.create(name: "Vocals", user: User.find_by(first_name: "Benjamin"))
+Talent.create(name: "Mix Engineer", user: User.find_by(first_name: "Sebastien"))
 
 puts "Done seeding!"

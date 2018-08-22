@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_21_144532) do
+ActiveRecord::Schema.define(version: 2018_08_21_145930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,13 @@ ActiveRecord::Schema.define(version: 2018_08_21_144532) do
 
   create_table "jobs", force: :cascade do |t|
     t.integer "price", default: 0
-    t.boolean "completed", default: false
     t.bigint "user_id"
     t.bigint "talent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "accepted"
+    t.datetime "completed"
+    t.string "audio_file"
     t.index ["talent_id"], name: "index_jobs_on_talent_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
