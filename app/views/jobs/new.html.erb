@@ -18,21 +18,13 @@
           <p>Job completion status: <%= @job.completed %></p>
         </div>
       </div>
-
       <div class="box box-pro" id="new-job-message">
-        <h3>Post a message :</h3>
-          <%= simple_form_for @message do |f| %>
+        <h3>Post a message & load a music file :</h3>
+          <%= simple_form_for [@job, @message] do |f| %>
             <%= f.input :content, :input_html => {rows: 6, cols: 6}  %>
-            <br>
-            <%= f.submit "Confirm message", class: "btn btn-primary btn-block" %>
-          <% end %>
-      </div>
-
-      <div class="box box-pro" id="new-job-file">
-        <h3>Upload an sound file :</h3>
-          <%= simple_form_for @job do |f| %>
             <%= cl_upload_tag(:audio_file, :resource_type => "video") %>
-            <%= f.submit "Upload file", class: "btn btn-primary btn-block" %>
+            <br>
+            <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
           <% end %>
       </div>
     </div>

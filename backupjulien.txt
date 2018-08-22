@@ -1,0 +1,14 @@
+    if params[:file].present?
+      preloaded = Cloudinary::PreloadedFile.new(params[:file])
+      raise "Invalid upload signature" if !preloaded.valid?
+      @job.audio_file = preloaded.identifier
+    end
+
+
+ <div class="box box-pro" id="new-job-file">
+        <h3>Upload an sound file :</h3>
+          <%= simple_form_for @job do |f| %>
+            <%= cl_upload_tag(:audio_file, :resource_type => "video") %>
+            <%= f.submit "Upload file", class: "btn btn-primary btn-block" %>
+          <% end %>
+      </div>
