@@ -25,6 +25,9 @@
             <h1 class="name"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}"%></h1>
             <h4> Main skill : <span class="values"><%= @user.talents.first.name.capitalize %></span></h4>
             <h4> Based in <span class="values"><%= @user.city.capitalize %></span></h4>
+            <% if current_user.id == @user.id %>
+              <h4 class="edit-profile"><%= link_to "Edit Profile", user_path %></h4>
+            <% end %>
           </div>
         </div>
 
@@ -63,6 +66,3 @@
 </div>
 
 
-<% if current_user.id == @user.id %>
-  <%= link_to "Edit Profile", user_path %>
-<% end %>

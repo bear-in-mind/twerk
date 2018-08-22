@@ -45,11 +45,12 @@ c = User.new(
   city: "Paris",
   email: 'louis.sommer@gmail.com',
   password: "0123456",
-  main_job: "Producer"
+  main_job: "Producer",
+  bio: "I'm a musician, arranger and producer from Paris. Deeply influenced by black music, jazz, and electronic music, I will adapt to any project, in any genre, provided I'll have the right to make it groove!"
 )
 
 c.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/louis.jpg"
-c.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/louis.jpg"
+c.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591/banner_images/max_banner.jpg"
 c.save
 
 d = User.new(
