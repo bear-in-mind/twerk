@@ -2,22 +2,23 @@
   <h6>Showing <%= @results.count %> results</h6>
   <ul>
     <% @results.each do |profile| %>
-      <li class="profile-item text-inline">
-        <div>
-          <% if profile.avatar.filename.nil? %>
-            <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-          <% else  %>
-            <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-          <% end  %>
-        </div>
-        <div class="text">
-          <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-          <h5><%= profile.talents.first %></h5>
-          <h6><%= profile.city %></h6>
-          <p><%= profile.bio.slice(0, 200) unless profile.bio.nil? %></p>
-        </div>
-        <%= link_to '', show_profile_path(profile) %>
-      </li>
+      <%= link_to show_profile_path(profile) do %>
+        <li class="profile-item text-inline">
+          <div>
+            <% if profile.avatar.filename.nil? %>
+              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+            <% else  %>
+              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
+            <% end  %>
+          </div>
+          <div class="text">
+            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+            <%= profile.main_job %>
+            <h6><%= profile.city %></h6>
+            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+          </div>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
