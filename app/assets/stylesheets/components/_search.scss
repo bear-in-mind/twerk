@@ -1,0 +1,27 @@
+#nav-search-bar {
+  position: relative;
+  top: -53px;
+  left: 160px;
+  font-family: $headers-font;
+  font-weight: lighter;
+  font-size: 14px;
+  z-index: 100;
+
+  .input-group {
+    width: 32vw;
+  }
+
+  #search-query {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 0;
+  }
+
+  #search-submit {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 6px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 6px;
+  }
+}

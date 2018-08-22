@@ -11,11 +11,12 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
+    <% if controller_name != 'pages' && controller_name != 'sessions' %>
+      <%= render 'shared/search' %>
+    <% end %>
     <%= render 'shared/flashes' %>
-    <div class="container-fluid">
-      <%= yield %>
-      <%= javascript_include_tag 'application' %>
-      <%= javascript_pack_tag 'application' %>
-    </div>
+    <%= yield %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
   </body>
 </html>
