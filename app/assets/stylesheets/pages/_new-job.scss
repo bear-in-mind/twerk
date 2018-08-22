@@ -1,0 +1,21 @@
+#new-job-form{
+  background-color: rgba(0,0,0,0.1);
+}
+
+#new-job-profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wrapper{
+  background-color: white;
+}
+
+#new-job-message .text{
+  margin: 0;
+}
+
+.box-pro{
+  background-color: $green;
+}
