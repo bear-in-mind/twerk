@@ -27,6 +27,15 @@
   }
 }
 
+h4.edit-profile {
+  a {
+    color: $green;
+  }
+  a:hover {
+    font-weight: 400;
+  }
+}
+
 .banner-profile {
   background-color: transparent;
   height: 30vh;
