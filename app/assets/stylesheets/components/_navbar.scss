@@ -26,16 +26,18 @@ a.navbar-wagon-brand:hover {
 a.navbar-wagon-brand {
   text-decoration: none;
   color: black;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .brand {
   position: absolute;
   color: white;
-  top: 30%;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  top: 25%;
   right: 50%;
   margin: 0;
   font-weight: bolder;
+  font-size: 24px;
 }
 
 /* User Avatar */
@@ -63,7 +65,7 @@ a.navbar-wagon-brand {
 .navbar-wagon-link {
   color: black;
   opacity: 0.7;
-  font-size: 14px;
+  font-size: 18px;
 }
 .navbar-wagon-link:hover {
   color: white;
