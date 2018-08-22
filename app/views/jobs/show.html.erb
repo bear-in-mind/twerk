@@ -1,21 +1,43 @@
-<h1>Jobs#show</h1>
-<p>Find me in app/views/jobs/show.html.erb</p>
 
-<div class="container-fluid">
-  <div class="grid">
-    <div class="box supplier">
+<!-- @job = Job.find(params[:id])
+authorize @job
+@supplier = @job.talent.user
+@client = @job.user
+@price = @job.price -->
 
+<div id="job-show-container">
+  <div class="box status text-center">
+    <h4>Maxime has accepted your request</h4>
+    <h5>Happy collab !</h5>
+    <button class="btn btn-success" >Mark Job as Completed</button>
+  </div>
+
+  <div class="box supplier">
+    <div>
+      <% if User.find_by(first_name: 'Maxime').avatar.filename.nil? %>
+        <%= image_tag "noprofilepicture.png", height: 104, width: 104, class: "avatar" %>
+      <% else  %>
+        <%= cl_image_tag User.find_by(first_name: 'Maxime').avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
+      <% end  %>
     </div>
-    <div class="box status">
-
+    <div class="text">
+      <h4><%= User.find_by(first_name: 'Maxime').first_name.capitalize%> <%= User.find_by(first_name: 'Maxime').last_name.upcase %> </h4>
+      <%= User.find_by(first_name: 'Maxime').main_job %>
+      <h6><%= User.find_by(first_name: 'Maxime').city %></h6>
+      <p><%= User.find_by(first_name: 'Maxime').bio.slice(0, 120) unless User.find_by(first_name: 'Maxime').bio.nil? %>...</p>
     </div>
-    <div class="box conversation">
-      <div class="new-msg">
+  </div>
 
-      </div>
-      <div class="index-msgs">
-
-      </div>
+  <div class="box conversation">
+    <div class="new-msg">
+      Write to Maxime
+      <form action="#">
+        <input type="text">
+      </form>
+    </div>
+    <div class="index-msgs">
+      Maxime GAROUTE - Just Now
+      <p>Hey mate! Thanks for contacting me. Project sounds amazing ! It'll be a pleasure to work with you again.</p>
     </div>
   </div>
 </div>

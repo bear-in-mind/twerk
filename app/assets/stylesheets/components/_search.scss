@@ -1,27 +1,65 @@
-#nav-search-bar {
+// search bar
+#nav-search-wrapper {
   position: relative;
   top: -53px;
   left: 160px;
+  width: 30vw;
+  padding: 0;
+  margin-top: 0;
+  z-index: 100;
+  box-sizing: content-box;
+  text-size-adjust: none;
+}
+
+.inline-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: $headers-font;
   font-weight: lighter;
   font-size: 14px;
-  z-index: 100;
-
-  .input-group {
-    width: 32vw;
-  }
-
-  #search-query {
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 0;
-  }
-
-  #search-submit {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 6px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 6px;
-  }
 }
+
+#nav-search-query {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 0;
+  height: 39px;
+}
+
+#nav-search-submit {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 6px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 6px;
+}
+
+
+// #nav-search-bar {
+//   position: relative;
+//   top: -53px;
+//   left: 160px;
+//   font-family: $headers-font;
+//   font-weight: lighter;
+//   font-size: 14px;
+//   z-index: 100;
+
+//   .input-group {
+//     width: 32vw;
+//   }
+
+//   #search-query {
+//     border-bottom-left-radius: 6px;
+//     border-bottom-right-radius: 0;
+//     border-top-left-radius: 6px;
+//     border-top-right-radius: 0;
+//   }
+
+//   #search-submit {
+//     border-bottom-left-radius: 0;
+//     border-bottom-right-radius: 6px;
+//     border-top-left-radius: 0;
+//     border-top-right-radius: 6px;
+//   }
+// }

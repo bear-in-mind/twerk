@@ -11,9 +11,6 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <% if controller_name != 'pages' && controller_name != 'sessions' %>
-      <%= render 'shared/search' %>
-    <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
