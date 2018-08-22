@@ -8,9 +8,13 @@ class JobPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    user == record.user || user == record.talent.user
+  end
+
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user: user)
     end
   end
 end

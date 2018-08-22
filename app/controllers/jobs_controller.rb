@@ -1,12 +1,20 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show]
 
   def index
-    @jobs_as_client = current_user.jobs
-    @jobs_as_supplier = current_user.talents.jobs
+    @jobs_as_client = policy_scope(Job)
+    @jobs_as_supplier = policy_scope(Job)
+
+    @my_talents = current_user.talents
+    @jobs_as_supplier = []
+    @my_talents.each do |talent|
+      @jobs_as_supplier << talent.jobs
+    end
+    @jobs_as_supplier.flatten!
   end
 
   def show
+    @job = Job.find(params[:id])
+    authorize @job
     @supplier = @job.talent.user
     @client = @job.user
     @price = @job.price
@@ -35,10 +43,6 @@ class JobsController < ApplicationController
   end
 
   private
-
-  def set_job
-    @job = Job.find(params[:id])
-  end
 
   def job_params
     params.require(:job).permit(:price)

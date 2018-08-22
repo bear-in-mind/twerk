@@ -1,29 +1,40 @@
-<h1>My Jobs</h1>
+<h1>My Projects</h1>
 
 <div class="container">
-  <h3> My Jobs as supplier </h3>
+  <h3> As client </h3>
   <div class="row">
-      <% @jobs_as_supplier.each do |job| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card">
-          <h2><%= job.talent.user.first_name.capitalize %>, <%= job.talent.user.last_name.capitalize %></h2>
-          <p><%= job.talent.name %></p>
+      <% if @jobs_as_client == nil %>
+        <h3> No Jobs yet!</h3>
+      <% else %>
+        <% @jobs_as_client.each do |job| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="job-card">
+            <%= link_to '', job_path(job.id), class: "card-link"%>
+            <h2><%= job.talent.user.first_name.capitalize %>, <%= job.talent.user.last_name.capitalize %></h2>
+            <p><%= job.talent.name %></p>
+            <%= cl_image_tag job.talent.user.avatar, height: 300, width: 400, crop: :fill %>
+          </div>
         </div>
-      </div>
       <% end %>
+    <% end %>
   </div>
 </div>
 
 <div class="container">
-  <h3> My Jobs as client </h3>
+  <h3> As supplier </h3>
   <div class="row">
-      <% @jobs_as_client.each do |job| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card">
-          <h2><%= job.talent.user.first_name.capitalize %>, <%= job.talent.user.last_name.capitalize %></h2>
-          <p><%= job.talent.name %></p>
+      <% if @jobs_as_supplier == [] %>
+        <h3> No Jobs yet!</h3>
+      <% else %>
+        <% @jobs_as_supplier.each do |job| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="job-card">
+            <%= link_to '', job_path(job.id), class: "card-link"%>
+            <h2><%= job.user.first_name.capitalize %>, <%= job.user.last_name.capitalize %></h2>
+            <h2><%= job.talent.name %></h2>
+          </div>
         </div>
-      </div>
+      <% end %>
       <% end %>
   </div>
 </div>
