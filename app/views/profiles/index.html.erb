@@ -1,7 +1,12 @@
 <div class="box" id="profiles-list">
-  <h6>Showing <%= @users.count %> results</h6>
+  <% if params["query"] == "" %>
+    <h6>Showing <%= @all_users.count %> results</h6>
+  <% else %>
+    <h6>Showing <%= @users.count %> results</h6>
+  <% end %>
   <ul>
-    <% @users.each do |profile| %>
+  <% if params["query"] == "" %>
+    <% @all_users.each do |profile| %>
       <%= link_to profile_path(profile) do %>
         <li class="profile-item text-inline">
           <div>
@@ -20,5 +25,45 @@
         </li>
       <% end %>
     <% end %>
+  <% else %>
+    <% @users_main_talent.each do |profile| %>
+      <%= link_to profile_path(profile) do %>
+        <li class="profile-item text-inline">
+          <div>
+            <% if profile.avatar.filename.nil? %>
+              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+            <% else  %>
+              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
+            <% end  %>
+          </div>
+          <div class="text">
+            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+            <%= profile.main_job %>
+            <h6><%= profile.city %></h6>
+            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+    <% @users_other_talent.each do |profile| %>
+      <%= link_to profile_path(profile) do %>
+        <li class="profile-item text-inline">
+          <div>
+            <% if profile.avatar.filename.nil? %>
+              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+            <% else  %>
+              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
+            <% end  %>
+          </div>
+          <div class="text">
+            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+            <%= profile.main_job %>
+            <h6><%= profile.city %></h6>
+            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  <% end%>
   </ul>
 </div>
