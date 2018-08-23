@@ -15,6 +15,7 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     authorize @job
+    @message = Message.new
     @supplier = @job.talent.user
     @client = @job.user
     @price = @job.price

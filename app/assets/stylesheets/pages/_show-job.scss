@@ -7,7 +7,11 @@
 
 }
 .conversation {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
 }
 
 .new-msg {
@@ -21,4 +25,22 @@
 
 .index-msgs {
   margin-top: 16px;
+}
+
+h5.msg-header {
+  font-weight: lighter;
+}
+
+strong.msg-header {
+  font-weight: normal;
+}
+
+form.new-msg {
+  width: 100%;
+}
+
+.new-message {
+  width: 80%;
+  text-align: center;
+  margin-top: 10px;
 }
