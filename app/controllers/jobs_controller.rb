@@ -32,7 +32,7 @@ class JobsController < ApplicationController
     @job.user = current_user
     authorize @job
     if @job.save
-      Message.create(user: current_user, job: @job, content: params[:message_content])
+      Message.create(job: @job, content: params[:message_content])
       redirect_to @job
     else
       render :new
