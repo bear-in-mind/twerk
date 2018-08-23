@@ -36,3 +36,57 @@
             <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
           <% end %>
       </div>
+
+
+
+
+
+
+  <div class="wrapper">
+
+  <h1>My Projects</h1>
+
+  <div class="container">
+    <h3> As client </h3>
+
+    <% if @jobs_as_client == nil %>
+      <br>
+      <h3> No Jobs yet!</h3>
+      <br>
+    <% else %>
+      <% @jobs_as_client.each do |job| %>
+
+          <div class="message">
+            <%= link_to '', profile_job_path(current_user, job.id), class: "card-link avatar-large"%>
+            <h2><%= job.talent.user.first_name.capitalize %>, <%= job.talent.user.last_name.capitalize %></h2>
+            <p><%= job.talent.name %></p>
+            <%= cl_image_tag job.talent.user.avatar, height: 300, width: 400, crop: :fill %>
+          </div>
+
+      <% end %>
+    <% end %>
+
+
+
+  </div>
+
+  <div class="container">
+    <h3> As supplier </h3>
+    <div class="row">
+        <% if @jobs_as_supplier == [] %>
+          <h3> No Jobs yet!</h3>
+        <% else %>
+          <% @jobs_as_supplier.each do |job| %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="message">
+              <%= link_to '', profile_job_path(current_user, job.id), class: "card-link"%>
+              <h2><%= job.user.first_name.capitalize %>, <%= job.user.last_name.capitalize %></h2>
+              <h2><%= job.talent.name %></h2>
+            </div>
+          </div>
+        <% end %>
+        <% end %>
+    </div>
+  </div>
+
+</div>
