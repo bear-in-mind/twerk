@@ -1,7 +1,6 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<h1>Edit your Profile</h1>
 
-<%= simple_form_for(@user, url: edit_profile_path) do |f| %>
+<%= simple_form_for(@user, url: profiles_update_path) do |f| %>
   <!-- [...] -->
 
   <%= f.input :first_name, as: :text %>
