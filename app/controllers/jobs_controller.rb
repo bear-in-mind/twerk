@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  before_action :set_supplier, only: [:new, :create]
 
   def index
     @jobs_as_client = policy_scope(Job)
@@ -24,35 +25,27 @@ class JobsController < ApplicationController
   def new
     @job = Job.new
     authorize @job
-    @user = current_user
-    @message = Message.new
-
-    # @supplier = @job.talent.user
-    # to be removed (for testing only):
-    suppliers = User.all
-    @supplier = suppliers[0]
   end
 
   def create
-    @jobs_as_client = policy_scope(Job)
-    @jobs_as_supplier = policy_scope(Job)
-    raise
-    authorize current_user
+    @job = Job.new(job_params)
+    @job.user = current_user
     authorize @job
-    # @job = Job.new[job_params]
-    suppliers = User.all
-    @supplier = suppliers[0]
-    redirect_to show_profile_path(@supplier)
-    # if @job.save
-    #   redirect_to @job
-    # else
-    #   render :new
-    # end
+    if @job.save
+      Message.create(user: current_user, job: @job, content: params[:message_content])
+      redirect_to @job
+    else
+      render :new
+    end
   end
 
   private
 
+  def set_supplier
+    @supplier = User.find(params[:profile_id])
+  end
+
   def job_params
-    params.require(:job).permit(:price, :file, :audio_file)
+    params.require(:job).permit(:price, :talent_id, :audio_file, :audio_file_cache)
   end
 end
