@@ -1,30 +1,68 @@
-.wrapper-profile {
-  // background-color: #E9EBEE;
-  background-color: white;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.banner-profile {
+  background-color: silver;
+  background-size:cover;
+  background-position: center;
+  height: 350px;
+  margin-left: 35px;
+  margin-right: 35px;
   position: relative;
-  height: 100vh;
+  z-index: 200;
 }
 
 .profile-page {
-  position: absolute;
-  top: 175px;
-  left: 150px;
+  margin-top: -130px;
 }
 
-.profile-button {
+.profile-bar {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  position: relative;
-  padding: 10px 0px;
-  margin-bottom: 20px;
-  top: 20px;
-  img {
+  align-items: flex-end;
+  margin-bottom: 16px;
+  background-color: white;
+  margin-right: 35px;
+  border-radius: 4px;
+  box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.1);
+}
 
+@media screen and (max-width: 990px) {
+  .banner-profile {
+    margin-left: 0;
+    margin-right: 0;
   }
+  .profile-bar {
+    flex-direction: column;
+    margin-right: 0;
+    align-items: center;
+  }
+  .profile-details {
+    margin-top: 6px;
+    text-align: center;
+  }
+}
+
+.profile-pic {
+  border-radius: 3px;
+  // transform: translateX(-35px);
+  position: relative;
+  z-index: 300;
+}
+
+.profile-details {
+  width: 100%;
+  padding: 0 15px;
+  .profile-name {
+    font-size: 24px;
+    margin: 0 0 6px;
+  }
+  p {
+    margin: 0 0 10px;
+  }
+}
+
+.request {
+  height: 50px;
+  margin: 15px;
 }
 
 h4.edit-profile {
@@ -36,51 +74,17 @@ h4.edit-profile {
   }
 }
 
-.banner-profile {
-  background-color: transparent;
-  height: 30vh;
-  width: 70%;
-}
-
-.box2 {
-  width: 80vw;
-  // margin: 16px auto;
-  box-shadow: none;
-  background-color: white;
-  border-radius: 4px;
-  // box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.1);
-  padding: 16px 40px;
-  h6 {
-    font-weight: lighter;
-  }
-  a {
-  text-decoration: none;
-  color: black;
-  }
-  margin: 0px;
-}
-
-
-// .box {
-//   padding: 20px;
-//   background-color: white;
-//   border-radius: 2px;
-//   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-//   margin: 20px;
-//   width: auto;
-// }
-
 .profile-content {
-  width: auto;
-  height: 160px;
+  margin-left: 20px;
+  margin-right: 20px;
   h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
   h2 {
-  font-size: 18px;
-  margin-top: 5px;
+    font-size: 18px;
+    margin-top: 5px;
   }
   h4 {
     font-weight: lighter;
@@ -92,10 +96,6 @@ h4.edit-profile {
 
 .bio {
   text-align: justify;
-}
-
-.skills {
-  height: auto;
 }
 
 .values {
@@ -113,12 +113,6 @@ h4.edit-profile {
 
 .album-box {
   height: 250px !important;
-}
-.request {
-  height: 50px;
-  position: absolute;
-  right: 50px;
-  bottom: 10px;
 }
 
 .box-title {

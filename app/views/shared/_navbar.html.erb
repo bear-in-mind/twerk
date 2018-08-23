@@ -1,9 +1,15 @@
 <div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.svg", height: 20 %>
-    <%= "   Home" %>
-  <% end %>
+  <!-- Left Navigation -->
+  <div class="navbar-wagon-left">
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+      <%= image_tag "logo.svg", height: 20 %>
+      <%= "   Home" %>
+    <% end %>
+    <% if controller_name != 'pages' && controller_name != 'sessions' %>
+      <%= render 'shared/search' %>
+    <% end %>
+  </div>
+
   <p class="brand">twerk</p>
 
   <!-- Right Navigation -->
