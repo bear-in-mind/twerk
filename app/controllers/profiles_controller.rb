@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
   def update
     current_user.update(user_params)
     authorize current_user
-    redirect_to show_profile_path(params[:id])
+    redirect_to profile_path(params[:id])
   end
 
   private
