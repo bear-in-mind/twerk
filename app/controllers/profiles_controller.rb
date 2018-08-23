@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = policy_scope(User)
-    @users = User.all
+    @users = User.global_search(params["query"])
   end
 
   def show
