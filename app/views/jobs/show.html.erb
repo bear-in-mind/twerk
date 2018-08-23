@@ -8,15 +8,17 @@ authorize @job
   <div class="job-show-grid">
 
     <div class="job-box supplier">
-      <div>
-        <% if @supplier.avatar.filename.nil? %>
-        <%= image_tag "noprofilepicture.png", height: 104, width: 104, class: "avatar" %>
-        <% else  %>
-        <%= cl_image_tag @supplier.avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
-        <% end  %>
-      </div>
+      <%= link_to profile_path(@job.talent.user) do %>
+        <div>
+          <% if @supplier.avatar.filename.nil? %>
+          <%= image_tag "noprofilepicture.png", height: 104, width: 104, class: "avatar" %>
+          <% else  %>
+          <%= cl_image_tag @supplier.avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
+          <% end  %>
+        </div>
+      <% end %>
       <div class="talent-text">
-        <h4><%= @supplier.first_name.capitalize%> <%= @supplier.last_name.upcase %> </h4>
+        <h4><%= link_to "#{@supplier.first_name.capitalize} #{@supplier.last_name.upcase}", profile_path(@job.talent.user)%></h4>
         <%= @supplier.main_job %>
         <h6><%= @supplier.city %></h6>
         <p><%= @supplier.bio.slice(0, 120) unless @supplier.bio.nil? %>...</p>
@@ -51,7 +53,7 @@ authorize @job
         <% if current_user == @supplier %>
 
           <% if @job.price != 0 %>
-            <h5 class="text-success"><%= @job.price %></h5>
+            <h4><%= "Maxime proposed #{@job.price} €." %></h4>
             <% simple_form_for @job do |f| %>
               <%= f.submit "Accept #{@supplier.first_name.capitalize}'s proposition", class: "btn btn-success"  %>
             <% end %>
@@ -59,11 +61,20 @@ authorize @job
  -->            <button class="btn btn-danger "><%= "Refuse #{@supplier.first_name.capitalize}'s proposition" %></button>
 
           <% elsif @job.accepted.nil? %>
-            <% simple_form_for @job do |f| %>
-              <%= f.submit "Propose a price", class: "btn btn-success"  %>
-            <% end %>
-<!--             <button class="btn btn-success "><#%= "Propose a price" %></button>
- -->            <button class="btn btn-danger "><%= "Refuse collaboration" %></button>
+          <div id="price">
+              <%= simple_form_for @job, :html => {:class => "form-inline"} do |f| %>
+                <%= f.input :price, label: false %>
+                <%= f.hidden_field :user_id, label: false %>
+                <%= f.submit "Propose a price in €", class: "btn btn-success", :input_html => { :style => 'width: 20px' } %>
+              <% end %>
+  <!--             <button class="btn btn-success "><#%= "Propose a price" %></button>
+              <button class="btn btn-danger "><#%= "Refuse collaboration" %></button>
+   -->
+               <%= simple_form_for @job do |f| %>
+                <%= f.hidden_field :accepted, value: false %>
+                <%= f.submit "Refuse collaboration", class: "btn btn-danger"  %>
+              <% end %>
+            </div>
 
           <% end %>
         <% elsif current_user == @client %>
@@ -77,7 +88,7 @@ authorize @job
             <button class="btn btn-success "><%= "Complete collaboration" %></button>
 
           <% elsif @job.accepted.nil? %>
-            <h5 class="text-muted text-center"> <%= @client.first_name.capitalize %> will propose a price along with his request.</h5>
+            <h5 class="text-muted text-center"> <%= @supplier.first_name.capitalize %> will propose a price along with his request.</h5>
 
           <% end %>
         <% end %>
@@ -89,7 +100,7 @@ authorize @job
         <%= simple_form_for @message do |f| %>
           <%= f.input :content, label: false,:input_html => {class: "test-width", :style => 'width: 100%', :rows => 5} %>
           <%= f.hidden_field :job_id, value: params[:id] %>
-          <%= f.hidden_field :user_id, value: params[:profile_id] %>
+          <%= f.hidden_field :user_id, value: current_user %>
           <%= f.submit "Send a message", class: "btn btn-success" %>
         <% end %>
       </div>

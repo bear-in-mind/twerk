@@ -25,6 +25,19 @@
   }
 }
 
+#price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  input.numeric {
+    width: 80px;
+  }
+  .btn {
+    margin: 10px;
+  }
+}
+
 
 .job-show-grid {
   display: grid;
@@ -38,6 +51,9 @@
   display: flex;
   // justify-content: center;
   align-items: center;
+  a:hover {
+    color: $green;
+  }
 }
 .status {
   grid-row: 2 / span 1;
