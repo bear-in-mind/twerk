@@ -23,8 +23,8 @@ authorize @job
       </div>
     </div>
 
-    <div class="job-box status text-center">
-      <% if current_user == @client %>
+    <% if current_user == @client %>
+      <div class="job-box status client text-center">
         <% if @job.accepted %>
           <h5 class="text-success"><%= @supplier.first_name.capitalize %> has accepted your request !</h5>
         <% elsif @job.accepted.nil? %>
@@ -32,7 +32,9 @@ authorize @job
         <% else %>
           <h5 class="text-danger">Sorry, <%= @supplier.first_name.capitalize %> has denied your request.</h5>
         <% end %>
-      <% elsif current_user == @supplier %>
+      </div>
+    <% elsif current_user == @supplier %>
+      <div class="job-box status supplier text-center">
         <% if @job.accepted %>
           <h5 class="text-success">You have accepted <%= @client.first_name.capitalize %>'s request !</h5>
         <% elsif @job.accepted.nil? %>
@@ -40,33 +42,47 @@ authorize @job
         <% else %>
           <h5 class="text-danger">You have refused <%= @client.first_name.capitalize %>'s request.</h5>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <% unless @job.accepted == false %>
       <div class="job-box price">
+
         <% if current_user == @supplier %>
-          <% if @job.accepted %>
+
+          <% if @job.price != 0 %>
             <h5 class="text-success"><%= @job.price %></h5>
+            <% simple_form_for @job do |f| %>
+              <%= f.submit "Accept #{@supplier.first_name.capitalize}'s proposition", class: "btn btn-success"  %>
+            <% end %>
+<!--             <button class="btn btn-success "><#%=  "Accept #{@supplier.first_name.capitalize}'s proposition" %></button>
+ -->            <button class="btn btn-danger "><%= "Refuse #{@supplier.first_name.capitalize}'s proposition" %></button>
+
           <% elsif @job.accepted.nil? %>
-            <h5 class="text-success text-center"> Propose a price to <%= @client.first_name.capitalize %></h5>
+            <% simple_form_for @job do |f| %>
+              <%= f.submit "Propose a price", class: "btn btn-success"  %>
+            <% end %>
+<!--             <button class="btn btn-success "><#%= "Propose a price" %></button>
+ -->            <button class="btn btn-danger "><%= "Refuse collaboration" %></button>
+
           <% end %>
         <% elsif current_user == @client %>
-          <% if @job.accepted %>
+
+          <% if @job.accepted && job.completed %>
             <h5 class="text-success"><%= @job.price %></h5>
+            <button class="btn btn-success "><%= "Pay #{@supplier.first_name.capitalize}" %></button>
+
+          <% elsif @job.accepted && !@job.completed %>
+            <h5 class="text-success"><%= @job.price %></h5>
+            <button class="btn btn-success "><%= "Complete collaboration" %></button>
+
           <% elsif @job.accepted.nil? %>
             <h5 class="text-muted text-center"> <%= @client.first_name.capitalize %> will propose a price along with his request.</h5>
+
           <% end %>
         <% end %>
       </div>
     <% end %>
-
-    <div class="job-box buttons">
-      <% if @job.accepted && current_user == @client %>
-      <button class="btn btn-success "><%= "Pay #{@supplier.first_name.capitalize}" %></button>
-      <button class="btn btn-success "> Mark Job as Completed</button>
-      <% end %>
-    </div>
 
     <div class="job-box conversation">
       <div class="new-message">
