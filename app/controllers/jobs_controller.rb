@@ -57,6 +57,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:price, :talent_id, :audio_file, :audio_file_cache, :accepted, :completed)
+    params.require(:job).permit(:price, :talent_id, :audio_file, :audio_file_cache, :accepted, :completed, :paid)
   end
 end

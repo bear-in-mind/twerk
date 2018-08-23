@@ -49,12 +49,14 @@ authorize @job
 <!-- DISPLAYS THE STATUS FOR THE CLIENT -->
     <% if current_user == @client %>
       <div class="job-box status client text-center">
-        <% if @job.accepted %>
+        <% if @job.paid %>
+          <h5 class="text-muted">Collaboration is over.</h5>
+        <% elsif @job.completed %>
+          <h5 class="text-success">Work is done ! You can proceed to payment below.</h5>
+        <% elsif @job.accepted %>
           <h5 class="text-success"><%= @supplier.first_name.capitalize %> has accepted your request !</h5>
         <% elsif @job.accepted.nil? %>
           <h5 class="text-muted">Your request is still pending.</h5>
-        <% elsif @job.completed %>
-          <h5 class="text-muted">Work is done ! You can proceed to payment below.</h5>
         <% else %>
           <h5 class="text-danger">Sorry, <%= @supplier.first_name.capitalize %> has denied your request.</h5>
         <% end %>
@@ -63,8 +65,15 @@ authorize @job
 <!-- DISPLAYS THE STATUS FOR THE SUPPLIER -->
     <% elsif current_user == @supplier %>
       <div class="job-box status supplier text-center">
-        <% if @job.accepted %>
-          <h5 class="text-success"><%= @client.first_name.capitalize %> has accepted your proposition !</h5>
+
+        <% if @job.paid %>
+          <h5 class="text-success">Payment received, collaboration over.</h5>
+
+        <% elsif @job.completed %>
+          <h5 class="text-success">Congrats ! Work is over. You will receive your payment soon.</h5>
+
+        <% elsif @job.accepted %>
+          <h5 class="text-success"><%= @client.first_name.capitalize %> has accepted your proposition ! </h5>
 
         <% elsif @job.accepted.nil? && @job.price == 0 %>
           <h5 class="text-primary">You have received a request from <%= "#{@client.first_name} #{@client.last_name}" %></h5>
@@ -79,13 +88,16 @@ authorize @job
       </div>
     <% end %>
 
-<!-- DISPLAYS PRICE AND ACTIONS FOR THE SUPPLIER -->
     <% unless @job.accepted == false %>
       <div class="job-box price text-center">
 
+<!-- DISPLAYS PRICE AND ACTIONS FOR THE SUPPLIER -->
         <% if current_user == @supplier %>
 
-          <% if @job.price != 0 && @job.accepted.nil? %>
+          <% if @job.paid %>
+            <h4>You received <span><%="#{@job.price} € "%></span> from <%= @client.first_name %> </h4>
+
+          <% elsif @job.price != 0 && @job.accepted.nil? %>
             <h4>You have proposed <span><%= "#{@job.price} €"%> to <%= @client.first_name %></span></h4>
 
           <% elsif @job.price != 0 && @job.accepted %>
@@ -105,25 +117,29 @@ authorize @job
               <% end %>
             </div>
 
-
-
           <% end %>
 
 <!-- DISPLAYS PRICE AND ACTIONS FOR THE CLIENT -->
         <% elsif current_user == @client %>
 
-          <% if @job.accepted && @job.completed %>
+          <% if @job.paid %>
+            <h4> <%="You paid"%> <span><%= "#{@job.price} €" %></span> to <%= "#{@supplier.first_name.capitalize}" %></h4>
+
+          <% elsif @job.completed %>
             <h4> <%="You paid"%> <span><%= "#{@job.price} €" %></span> to <%= "#{@supplier.first_name.capitalize}" %></h4>
 
             <div class= "confirmation-btn">
-              <%= link_to "Pay #{@supplier.first_name}", class: "btn btn-success" %>
+              <%= simple_form_for @job do |f| %>
+                <%= f.hidden_field :paid, value: true %>
+                <%= f.submit "Pay", class: "btn btn-success"  %>
+              <% end %>
             </div>
 
           <% elsif @job.accepted && !@job.completed %>
             <h4> <%="You agreed on paying "%> <span><%= "#{@job.price} € " %></span> for <%= "#{@supplier.first_name.capitalize}'s work." %></h4>
             <div class= "confirmation-btn">
               <%= simple_form_for @job do |f| %>
-                <%= f.hidden_field :completed, value: true %>
+                <%= f.hidden_field :completed, value: DateTime.now %>
                 <%= f.submit "Complete collaboration", class: "btn btn-success"  %>
               <% end %>
             </div>
