@@ -111,6 +111,9 @@ Talent.create(name: "Producer", user: d)
 Talent.create(name: "FOH Engineer", user: f)
 Talent.create(name: "Recording Engineer", user: f)
 
-Job.create!(talent_id: a.id, user_id: c.id)
+Job.create!(talent_id: 7, user_id: e.id) # Supplier: Max, Client: Johann
+Job.create!(talent_id: 2, user_id: a.id) # Supplier: Louis, Client: Max
+Job.create!(talent_id: 7, user_id: c.id) # Supplier: Max, Client: Louis
+Job.create!(talent_id: 1, user_id: e.id) # Supplier: Louis, Client: Johann
 
 puts "Done seeding!"
