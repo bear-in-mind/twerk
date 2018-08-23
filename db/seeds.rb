@@ -20,6 +20,7 @@ a = User.new(
   email: Faker::Internet.unique.email,
   password: "0123456",
   main_job: "Drummer",
+  genre: 'Pop, Funk, Disco',
   bio: "I'm a French drummer with deep roots in 80s american culture. I was very influenced by artists like Peter Gabriel, Toto, Michael Jackson and Price. My band is called Venice!"
 )
 a.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/maxime.jpg"
@@ -32,7 +33,8 @@ b = User.new(
   city: "Paris",
   email: Faker::Internet.unique.email,
   password: "0123456",
-  main_job: "Guitarist"
+  main_job: "Guitarist",
+  genre: 'Funk, Disco, Rock, Pop'
 )
 
 b.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/bogue.jpg"
@@ -46,6 +48,7 @@ c = User.new(
   email: 'louis.sommer@gmail.com',
   password: "0123456",
   main_job: "Producer",
+  genre: "Pop, Disco, Electro, RnB, Classical",
   bio: "I'm a musician, arranger and producer from Paris. Deeply influenced by black music, jazz, and electronic music, I will adapt to any project, in any genre, provided I'll have the right to make it groove!"
 )
 
@@ -59,7 +62,8 @@ d = User.new(
   city: "Paris",
   email: Faker::Internet.unique.email,
   password: "0123456",
-  main_job: "Artist"
+  main_job: "Artist",
+  genre: "Electro, House, Pop"
 )
 
 d.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855842/profile_pictures/BenjaminDiamond.jpg"
@@ -71,7 +75,8 @@ e = User.new(
   city: "Paris",
   email: Faker::Internet.unique.email,
   password: "0123456",
-  main_job: "Keyboardist"
+  main_job: "Keyboardist",
+  genre: "Pop, Blues, Rock, Funk"
 )
 
 e.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855790/profile_pictures/johan.jpg"
@@ -84,7 +89,8 @@ f = User.new(
   city: "Los Angeles",
   email: Faker::Internet.unique.email,
   password: "0123456",
-  main_job: "Mixing Engineer"
+  main_job: "Mixing Engineer",
+  genre: "Electro, Pop"
 )
 
 f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/sebastien.jpg"
