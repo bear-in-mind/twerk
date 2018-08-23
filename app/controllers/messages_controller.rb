@@ -15,11 +15,11 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     authorize @message
     @message.job = Job.find(params['message'][:job_id])
-    sender = User.find(params['message'][:user_id])
+    sender = current_user
     @message.sender = "#{sender.first_name} #{sender.last_name}"
   #  @message = @conversation.messages.new(message_params)
-    @message.save
-    redirect_to profile_job_path(sender, @message.job)
+    @message.save!
+    redirect_to job_path(@message.job)
   end
 
   private
