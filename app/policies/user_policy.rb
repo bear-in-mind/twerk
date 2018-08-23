@@ -1,14 +1,9 @@
 class UserPolicy < ApplicationPolicy
-
   def show?
     true
   end
 
   def index?
-    true
-  end
-
-  def search?
     true
   end
 
@@ -31,5 +26,4 @@ class UserPolicy < ApplicationPolicy
   def is_user_creator?
     record == user
   end
-
 end

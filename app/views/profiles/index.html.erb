@@ -1,8 +1,8 @@
 <div class="box" id="profiles-list">
-  <h6>Showing <%= @results.count %> results</h6>
+  <h6>Showing <%= @users.count %> results</h6>
   <ul>
-    <% @results.each do |profile| %>
-      <%= link_to show_profile_path(profile) do %>
+    <% @users.each do |profile| %>
+      <%= link_to profile_path(profile) do %>
         <li class="profile-item text-inline">
           <div>
             <% if profile.avatar.filename.nil? %>

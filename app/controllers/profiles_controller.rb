@@ -1,14 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :edit]
 
   def index
-    authorize current_user
+    @profiles = policy_scope(User)
     @users = User.all
-  end
-
-  def search
-    authorize current_user
-    @results = index
   end
 
   def show
@@ -16,7 +11,6 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     authorize @current_user if @user == current_user
   end
 
