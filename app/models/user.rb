@@ -27,4 +27,10 @@ class User < ApplicationRecord
       using: {
         tsearch: { prefix: true }
       }
+
+  pg_search_scope :city_search,
+      against: [ :city],
+      using: {
+        tsearch: { prefix: true }
+      }
 end
