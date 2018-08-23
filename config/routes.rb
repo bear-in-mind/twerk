@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :jobs, only: [:new, :create]
   end
   patch "profiles/:id", to: "profiles#update", as: "profiles_update"
-  resources :jobs, only: [:show, :index]
+  resources :jobs, only: [:show, :index, :update]
 
   resources :talents, only: [:new, :create, :edit, :update, :destroy]
   resources :reviews, only: [ :new, :create]

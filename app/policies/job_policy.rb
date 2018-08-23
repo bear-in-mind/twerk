@@ -8,6 +8,10 @@ class JobPolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    true
+  end
+
   def show?
     user == record.user || user == record.talent.user
   end
