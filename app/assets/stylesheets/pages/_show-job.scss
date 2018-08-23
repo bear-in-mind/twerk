@@ -64,6 +64,9 @@
 .price {
   grid-row: 3 / span 2;
   grid-column: 1 / span 1;
+  span {
+    color: $green;
+  }
 }
 
 .conversation {
@@ -73,7 +76,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .new-msg {
