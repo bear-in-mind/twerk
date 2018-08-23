@@ -32,7 +32,7 @@ authorize @job
         <% else %>
           <h5 class="text-danger">Sorry, <%= @supplier.first_name.capitalize %> has denied your request.</h5>
         <% end %>
-      <% else %>
+      <% elsif current_user == @supplier %>
         <% if @job.accepted %>
           <h5 class="text-success">You have accepted <%= @client.first_name.capitalize %>'s request !</h5>
         <% elsif @job.accepted.nil? %>
@@ -51,7 +51,7 @@ authorize @job
           <% elsif @job.accepted.nil? %>
             <h5 class="text-success text-center"> Propose a price to <%= @client.first_name.capitalize %></h5>
           <% end %>
-        <% else %>
+        <% elsif current_user == @client %>
           <% if @job.accepted %>
             <h5 class="text-success"><%= @job.price %></h5>
           <% elsif @job.accepted.nil? %>
@@ -62,8 +62,9 @@ authorize @job
     <% end %>
 
     <div class="job-box buttons">
-      <% if @job.accepted %>
-      <button class="btn btn-success " >Mark Job as Completed</button>
+      <% if @job.accepted && current_user == @client %>
+      <button class="btn btn-success "><%= "Pay #{@supplier.first_name.capitalize}" %></button>
+      <button class="btn btn-success "> Mark Job as Completed</button>
       <% end %>
     </div>
 
