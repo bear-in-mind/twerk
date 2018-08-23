@@ -1,4 +1,12 @@
+.job-show-grid {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  grid-template-rows: 40% 20% 20% 20%;
+}
+
 .supplier {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span;
   display: flex;
   // justify-content: center;
   align-items: center;
@@ -7,7 +15,11 @@
 
 }
 .conversation {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
 }
 
 .new-msg {
@@ -22,3 +34,22 @@
 .index-msgs {
   margin-top: 16px;
 }
+
+h5.msg-header {
+  font-weight: lighter;
+}
+
+strong.msg-header {
+  font-weight: normal;
+}
+
+form.new-msg {
+  width: 100%;
+}
+
+.new-message {
+  width: 80%;
+  text-align: center;
+  margin-top: 10px;
+}
+
