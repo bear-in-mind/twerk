@@ -20,8 +20,7 @@
             <p><%= job.talent.name %></p>
           </div>
           <div class="message-body">
-            <p><%= job.messages.last %></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, esse, ut. Repudiandae ex iste laudantium distinctio nulla nam quod odit accusantium, doloribus fugiat, consectetur obcaecati beatae aperiam deleniti mollitia. Neque.</p>
+            <p><%= job.messages.last.content %></p>
           </div>
           <div class="message-status">
             <% if job.accepted.nil? %>
@@ -30,7 +29,7 @@
               <h3 class="status accepted">Accepted</h3>
             <% end %>
           </div>
-          <%= link_to '', profile_job_path(current_user, job.id), class: "card-link"%>
+          <%= link_to '', job_path(job.id), class: "card-link"%>
         </div>
       <% end %>
     <% end %>
@@ -45,7 +44,7 @@
     <% else %>
       <% @jobs_as_supplier.each do |job| %>
         <div class="message">
-          <%= link_to '', profile_job_path(current_user, job.id), class: "card-link"%>
+          <%= link_to '', job_path(job.id), class: "card-link"%>
           <!-- avatar -->
           <%= cl_image_tag job.user.avatar, height: 104, width: 104, class: "avatar", crop: :fill %>
           <!-- avatar -->
@@ -54,8 +53,7 @@
             <p><%= job.talent.name %></p>
           </div>
           <div class="message-body">
-            <p><%= job.messages.last %></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, esse, ut. Repudiandae ex iste laudantium distinctio nulla nam quod odit accusantium, doloribus fugiat, consectetur obcaecati beatae aperiam deleniti mollitia. Neque.</p>
+            <p><%= job.messages.last.content %></p>
           </div>
           <div class="message-status">
             <% if job.accepted.nil? %>

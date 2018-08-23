@@ -122,4 +122,16 @@ Job.create!(talent_id: 2, user_id: a.id) # Supplier: Louis, Client: Max
 Job.create!(talent_id: 7, user_id: c.id) # Supplier: Max, Client: Louis
 Job.create!(talent_id: 1, user_id: e.id) # Supplier: Louis, Client: Johann
 
+
+j4 = Job.find_by(id: 4)
+j3 = Job.find_by(id: 3)
+Message.create(content: "Are you free?", job_id: 1)
+Message.create(content: "Do you want to play", job_id: 2)
+Message.create(content: "We produce a record next month, are you available?", job_id: 3)
+Message.create(content: "Shall we work together again?", job_id: 4)
+
+j4.accepted = true
+j4.save
+
+
 puts "Done seeding!"
