@@ -1,36 +1,30 @@
-
-<div class="wrapper">
-  <div class="row">
-    <div id="new-job-form">
-      <div class="box box-pro" id="new-job-pro">
-        <div id="new-job-pro-name">
-          <h1>Create a new job request</h1>
-<!--           <h2>NB: remove temp @supplier value in jobs_controller</h2> -->
-          <h3>Selected Music Pro: <%= @supplier.first_name.capitalize  %> <%= @supplier.last_name.capitalize %> </h3>
-        </div>
-        <div id="new-job-pro-talents">
-          <h3>Skills: <% @supplier.talents.each do |talent| %>
-            <%= talent.name %>
-            <% end %>
-          </h3>
-        </div>
-        <div id="new-job-pro-completion">
-          <p>Job completion status: pending <%= @job.completed %></p>
-        </div>
-      </div>
-
-
-      <div class="box box-pro" id="new-job-message">
-        <h3>Load a music file :</h3>
-          <%= simple_form_for @job do |f| %>
-            <%= cl_upload_tag(:audio_file, :resource_type => "video") %>
-            <br>
-            <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
-          <% end %>
-      </div>
-
+<div class="container">
+<!--   <div class="row">
+    div.col-xs-12.col-md-4.col-offset.md.4
+  </div> -->
+  <div class="supplier-profile box text-center">
+    <div class="supplier-pic">
+      <%= cl_image_tag @supplier.avatar, height: 200, width: 200, crop: :fill, class: "avatar" %>
+    </div>
+    <div class="supplier-details">
+      <h3><%= @supplier.first_name.capitalize %> <%= @supplier.last_name.upcase %></h3>
+      <p>
+        Main skill : <span class="values"><%= @supplier.main_job if @supplier.main_job %></span> -
+        Based in <span class="values"><%= @supplier.city.capitalize if @supplier.city %></span>
+      </p>
     </div>
   </div>
+
+  <%= simple_form_for([@supplier, @job], method: :post, url: "/profiles/#{params[:profile_id]}/jobs") do |f| %>
+    <%= f.association :talent, collection: @supplier.talents %>
+    <%= f.input :audio_file %>
+    <%= f.input :audio_file_cache, as: :hidden %>
+    <div class="form-group">
+      <label for="message_content" class="form-control-label">First message</label>
+      <textarea class="form-control" name="message_content" rows="10"></textarea>
+    </div>
+    <%= f.button :submit, class: "btn btn-block btn-success" %>
+  <% end %>
 </div>
 
 

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :profiles, only: [:index, :show, :edit] do
-    resources :jobs, only: [:new, :create, :index, :show]
+    resources :jobs, only: [:new, :create]
   end
-
   patch "profiles/:id", to: "profiles#update", as: "profiles_update"
+  resources :jobs, only: [:show, :index]
 
   resources :talents, only: [:new, :create, :edit, :update, :destroy]
   resources :reviews, only: [ :new, :create]

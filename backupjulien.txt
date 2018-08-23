@@ -1,3 +1,44 @@
+<div class="wrapper">
+  <div class="row">
+    <div id="new-job-form">
+      <div class="box box-pro" id="new-job-pro">
+        <div id="new-job-pro-name">
+          <h1>Create a new job request</h1>
+<!--           <h2>NB: remove temp @supplier value in jobs_controller</h2> -->
+          <h3>Selected Music Pro: <%= @supplier.first_name.capitalize  %> <%= @supplier.last_name.capitalize %> </h3>
+        </div>
+        <div id="new-job-pro-talents">
+          <h3>Skills: <% @supplier.talents.each do |talent| %>
+            <%= talent.name %>
+            <% end %>
+          </h3>
+        </div>
+        <div id="new-job-pro-completion">
+          <p>Job completion status: pending <%= @job.completed %></p>
+        </div>
+      </div>
+
+
+      <div class="box box-pro" id="new-job-message">
+        <h3>Load a music file :</h3>
+          <%= simple_form_for @job do |f| %>
+            <%= cl_upload_tag(:audio_file, :resource_type => "video") %>
+            <br>
+            <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
+          <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
     if params[:file].present?
       preloaded = Cloudinary::PreloadedFile.new(params[:file])
       raise "Invalid upload signature" if !preloaded.valid?
