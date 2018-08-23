@@ -1,4 +1,12 @@
+.job-show-grid {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  grid-template-rows: 40% 20% 20% 20%;
+}
+
 .supplier {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span;
   display: flex;
   // justify-content: center;
   align-items: center;
@@ -44,3 +52,4 @@ form.new-msg {
   text-align: center;
   margin-top: 10px;
 }
+

@@ -5,58 +5,75 @@ authorize @job
 @client = @job.user
 @price = @job.price -->
 
-<div id="job-show-container">
-
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
+    <div class="job-show-grid">
+      <div class="row">
+        <div class="col-xs-12 col-md-8">
 
-        <div class="box supplier">
-          <div>
-            <% if User.find_by(first_name: 'Maxime').avatar.filename.nil? %>
-            <%= image_tag "noprofilepicture.png", height: 104, width: 104, class: "avatar" %>
-            <% else  %>
-            <%= cl_image_tag User.find_by(first_name: 'Maxime').avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
-            <% end  %>
+          <div class="box supplier">
+            <div>
+              <% if @supplier.avatar.filename.nil? %>
+              <%= image_tag "noprofilepicture.png", height: 104, width: 104, class: "avatar" %>
+              <% else  %>
+              <%= cl_image_tag @supplier.avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
+              <% end  %>
+            </div>
+            <div class="talent-text">
+              <h4><%= @supplier.first_name.capitalize%> <%= @supplier.last_name.upcase %> </h4>
+              <%= @supplier.main_job %>
+              <h6><%= @supplier.city %></h6>
+              <p><%= @supplier.bio.slice(0, 120) unless @supplier.bio.nil? %>...</p>
+            </div>
           </div>
-          <div class="talent-text">
-            <h4><%= User.find_by(first_name: 'Maxime').first_name.capitalize%> <%= User.find_by(first_name: 'Maxime').last_name.upcase %> </h4>
-            <%= User.find_by(first_name: 'Maxime').main_job %>
-            <h6><%= User.find_by(first_name: 'Maxime').city %></h6>
-            <p><%= User.find_by(first_name: 'Maxime').bio.slice(0, 120) unless User.find_by(first_name: 'Maxime').bio.nil? %>...</p>
-          </div>
-        </div>
 
-        <div class="box status text-center">
-          <h4>Maxime has accepted your request</h4>
-          <h5>Happy collab !</h5>
-          <button class="btn btn-success" >Mark Job as Completed</button>
-        </div>
-
-
-      </div>
-      <div class="col-xs-12 col-md-6">
-
-        <div class="box conversation">
-          <div class="new-message">
-            <%= simple_form_for @message do |f| %>
-              <%= f.input :content, label: false,:input_html => {class: "test-width", :style => 'width: 100%', :rows => 5} %>
-              <%= f.hidden_field :job_id, value: params[:id] %>
-              <%= f.hidden_field :user_id, value: params[:profile_id] %>
-              <%= f.submit "Send a message", class: "btn btn-success" %>
+          <div class="box status text-center">
+            <% if current_user == @client %>
+              <% if @job.accepted %>
+                <h4 class="text-success"><%= @supplier.first_name.capitalize %> has accepted your request !</h4>
+                <button class="btn btn-success" >Mark Job as Completed</button>
+              <% elsif @job.accepted.nil? %>
+                <h4 class="text-muted">Your request is still pending.</h4>
+              <% else %>
+                <h4 class="text-danger">Sorry, <%= @supplier.first_name.capitalize %> has denied your request.</h4>
+              <% end %>
+            <% else %>
+              <% if @job.accepted %>
+                <h4 class="text-success">You have accepted <%= @client.first_name.capitalize %>'s request !</h4>
+              <% elsif @job.accepted.nil? %>
+                <h4 class="text-primary">You have received a request from <%= "#{@client.first_name} #{@client.last_name}" %></h4>
+              <% else %>
+                <h4 class="text-danger">You have refused <%= @client.first_name.capitalize %>'s request.</h4>
+              <% end %>
             <% end %>
           </div>
-          <div class="index-msgs">
-            <div class="message">
-              <% @job.messages.each do |message| %>
-                <h5 class="msg-header"><strong><%= message.sender %></strong> - <%= message.created_at.strftime("%e %b %Y %H:%M %p") %></h5>
-                <p><%= message.content %></p>
+
+          <div class="box price">
+            <% if @job.accepted %>
+              <h4 class="text-success"><%= @job.price %></h4>
+            <% elsif @job.accepted.nil? %>
+              <h4 class="text-success text-center"> Propose a price to <%= @client.first_name.capitalize %>
+            <% end %>
+          </div>
+
+          <div class="box conversation">
+            <div class="new-message">
+              <%= simple_form_for @message do |f| %>
+                <%= f.input :content, label: false,:input_html => {class: "test-width", :style => 'width: 100%', :rows => 5} %>
+                <%= f.hidden_field :job_id, value: params[:id] %>
+                <%= f.hidden_field :user_id, value: params[:profile_id] %>
+                <%= f.submit "Send a message", class: "btn btn-success" %>
               <% end %>
+            </div>
+            <div class="index-msgs">
+              <div class="message">
+                <% @job.messages.each do |message| %>
+                  <h5 class="msg-header"><strong><%= message.sender %></strong> - <%= message.created_at.strftime("%e %b %Y %H:%M %p") %></h5>
+                  <p><%= message.content %></p>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
-</div>
