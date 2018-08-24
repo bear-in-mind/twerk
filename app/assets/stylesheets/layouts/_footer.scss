@@ -1,3 +1,9 @@
+// above footer
+.full-pages {
+  min-height: calc(100% - 170px);
+}
+
+// footer
 .footer {
   background: #F4F4F4;
   display: flex;
