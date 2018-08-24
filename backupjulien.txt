@@ -131,3 +131,16 @@
   </div>
 
 </div>
+
+
+
+    <h1>My Projects</h1>
+    <p>current_user.first_name : <%= current_user.first_name %></p>
+    <p>Jobs:</p>
+    <% @jobs.each do |job| %>
+      <p><%= job %></p>
+    <% end %>
+    <p>Jobs as client:</p>
+    <% @jobs_as_client.each do |job| %>
+      <p><%= job %></p>
+    <% end %>
