@@ -1,9 +1,25 @@
+// h1 {
+//   font-size: 40px;
+// }
+// h2 {
+//   font-size: 32px;
+// }
+// h3 {
+//   font-size: 16px;
+// }
+// p {
+//   font-size:13px;
+// }
+
+
 .message {
   position: relative;
   display: flex;
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
+  background-color: white;
+  margin: 10px;
 }
 .message:last-child {
   border-bottom: none;
@@ -16,18 +32,19 @@
   min-width: 100px;
 }
 .message-name h3 {
-  font-size: 16px;
+  font-size: 24px;
   margin-bottom: 0px;
 }
 .message-name p {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: lighter;
   opacity: 0.6;
   margin-top: 5px;
 }
-.message-body {
+.message-body p {
   padding-left: 10px;
-  font-size: 13px;
+  font-weight: normal;
+  font-size: 18px;
   color: rgba(0,0,0,0.7);
 }
 .message-body {
@@ -41,8 +58,8 @@
 .message-body p {
   margin: 6px 0;
 }
-.message-status {
-  font-size: 14px;
+.message-status h3 {
+  font-size: 24px;
   font-weight: bold;
 }
 .status.accepted {

@@ -10,10 +10,14 @@ class JobsController < ApplicationController
       @jobs_as_supplier << talent.jobs
     end
 
+    @jobs = Job.all
     @jobs_as_client = []
-    @my_talents.each do |talent|
-      @jobs_as_client << talent.jobs
+    @jobs.each do |job|
+      if (job.user_id == current_user.id)
+        @jobs_as_client << job
+      end
     end
+    @jobs_as_client.flatten!
 
     @jobs_as_supplier.flatten!
   end

@@ -1,7 +1,6 @@
 <div class="wrapper">
-  <div class="container">
 
-    <h1>My Projects</h1>
+  <div class="container">
 
 
     <h3> As a client </h3>
@@ -12,7 +11,7 @@
     <% else %>
       <% @jobs_as_client.each do |job| %>
         <div class="message">
-          <%#= link_to '', job_path(job.id), class: "message-link"%>
+          <%= link_to '', job_path(job.id), class: "message-link"%>
           <!-- avatar -->
           <%= cl_image_tag job.talent.user.avatar, height: 104, width: 104, class: "avatar", crop: :fill %>
           <!-- avatar -->
