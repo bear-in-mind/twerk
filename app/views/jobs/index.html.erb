@@ -1,40 +1,71 @@
-<h1>My Projects</h1>
+<div class="wrapper">
+  <div class="container">
+    <h1>My Projects</h1>
+  </div>
+  <div class="container">
+    <h3> As client </h3>
 
-<div class="container">
-  <h3> As client </h3>
-  <div class="row">
-      <% if @jobs_as_client == nil %>
-        <h3> No Jobs yet!</h3>
-      <% else %>
-        <% @jobs_as_client.each do |job| %>
-        <div class="col-xs-12 col-sm-4">
-          <div class="job-card">
-            <%= link_to '', job_path(job), class: "card-link"%>
-            <h2><%= job.talent.user.first_name.capitalize %>, <%= job.talent.user.last_name.capitalize %></h2>
+    <% if @jobs_as_client == nil %>
+      <br>
+      <h3> No Jobs yet!</h3>
+      <br>
+    <% else %>
+      <% @jobs_as_client.each do |job| %>
+        <div class="message">
+          <!-- avatar -->
+          <%= cl_image_tag job.talent.user.avatar, height: 104, width: 104, class: "avatar", crop: :fill %>
+          <!-- avatar -->
+          <div class="message-name">
+            <h3><%= job.talent.user.first_name.capitalize %> <%= job.talent.user.last_name.capitalize %></h3>
             <p><%= job.talent.name %></p>
-            <%= cl_image_tag job.talent.user.avatar, height: 300, width: 400, crop: :fill %>
           </div>
+          <div class="message-body">
+            <p><%= job.messages.last.content %></p>
+          </div>
+          <div class="message-status">
+            <% if job.accepted.nil? %>
+              <h3 class="status pending">Pending</h3>
+            <% else %>
+              <h3 class="status accepted">Accepted</h3>
+            <% end %>
+          </div>
+          <%= link_to '', job_path(job.id), class: "card-link"%>
         </div>
       <% end %>
     <% end %>
   </div>
-</div>
 
-<div class="container">
-  <h3> As supplier </h3>
-  <div class="row">
-      <% if @jobs_as_supplier == [] %>
-        <h3> No Jobs yet!</h3>
-      <% else %>
-        <% @jobs_as_supplier.each do |job| %>
-        <div class="col-xs-12 col-sm-4">
-          <div class="job-card">
-            <%= link_to '', job_path(job), class: "card-link"%>
-            <h2><%= job.user.first_name.capitalize %>, <%= job.user.last_name.capitalize %></h2>
-            <h2><%= job.talent.name %></h2>
+  <div class="container">
+    <h3> As supplier </h3>
+    <% if @jobs_as_supplier == [] %>
+      <br>
+      <h3> No Jobs yet!</h3>
+      <br>
+    <% else %>
+      <% @jobs_as_supplier.each do |job| %>
+        <div class="message">
+          <%= link_to '', job_path(job.id), class: "card-link"%>
+          <!-- avatar -->
+          <%= cl_image_tag job.user.avatar, height: 104, width: 104, class: "avatar", crop: :fill %>
+          <!-- avatar -->
+          <div class="message-name">
+            <h3><%= job.user.first_name.capitalize %> <%= job.user.last_name.capitalize %></h3>
+            <p><%= job.talent.name %></p>
+          </div>
+          <div class="message-body">
+            <p><%= job.messages.last.content %></p>
+          </div>
+          <div class="message-status">
+            <% if job.accepted.nil? %>
+              <h3 class="status pending">Pending</h3>
+            <% else %>
+              <h3 class="status accepted">Accepted</h3>
+            <% end %>
           </div>
         </div>
       <% end %>
-      <% end %>
+    <% end %>
+
   </div>
 </div>
+

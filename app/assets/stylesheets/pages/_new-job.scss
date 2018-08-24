@@ -1,21 +1,37 @@
-#new-job-form{
-  background-color: rgba(0,0,0,0.1);
+.supplier-profile {
+  border-right: 2px solid $light-gray;
 }
 
-#new-job-profile{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+// talent selection
+.supplier-talents {
+  padding-top: 15%;
 }
 
-.wrapper{
-  background-color: white;
+legend {
+  font-family: $headers-font;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: none;
 }
 
-#new-job-message .text{
-  margin: 0;
+.collection_radio_buttons {
+  margin-left: 10px;
+  padding-top: 4px;
+  font-family: $body-font;
+  font-weight: normal;
 }
 
-.box-pro{
-  background-color: $green;
+// rest of form
+.form-control-label, .file label {
+  font-family: $headers-font;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.end-of-form {
+  margin-top: 24px;
+  margin-bottom: 56px;
 }
