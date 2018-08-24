@@ -7,8 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Destroying records"
-User.destroy_all
 Talent.destroy_all
+Message.destroy_all
+Review.destroy_all
 User.destroy_all
 
 puts "Start seeding"
@@ -119,16 +120,16 @@ Talent.create(name: "Recording Engineer", user: f)
 
 Job.create!(talent_id: 7, user_id: e.id) # Supplier: Max, Client: Johann
 Job.create!(talent_id: 2, user_id: a.id) # Supplier: Louis, Client: Max
-Job.create!(talent_id: 7, user_id: c.id) # Supplier: Max, Client: Louis
+Job.create!(talent_id: 10, user_id: c.id) # Supplier: Nico, Client: Louis
 Job.create!(talent_id: 1, user_id: e.id) # Supplier: Louis, Client: Johann
 
 
 j4 = Job.find_by(id: 4)
 j3 = Job.find_by(id: 3)
-Message.create(content: "Are you free?", job_id: 1, sender: "#{Job.find(1).user.first_name} #{Job.find(1).user.last_name}")
-Message.create(content: "Do you want to play ?", job_id: 2, sender: "#{Job.find(2).user.first_name} #{Job.find(2).user.last_name}")
+Message.create(content: "Hey Max, I'm Johann. I need you for a few groovy drums!", job_id: 1, sender: "#{Job.find(1).user.first_name} #{Job.find(1).user.last_name}")
+Message.create(content: "Yo Louis, I need some disco strings for my next album. Up to the task ?", job_id: 2, sender: "#{Job.find(2).user.first_name} #{Job.find(2).user.last_name}")
 Message.create(content: "We produce a record next month, are you available?", job_id: 3, sender: "#{Job.find(3).user.first_name} #{Job.find(3).user.last_name}")
-Message.create(content: "Shall we work together again?", job_id: 4, sender: "#{Job.find(4).user.first_name} #{Job.find(4).user.last_name}")
+Message.create(content: "Hello Louis, I'm looking for a bass player for my next project. When would you be available ?", job_id: 4, sender: "#{Job.find(4).user.first_name} #{Job.find(4).user.last_name}")
 
 j4.accepted = true
 j4.save
