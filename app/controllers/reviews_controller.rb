@@ -7,16 +7,16 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.user = User.find(params[:id])
     authorize @review
-    @review.save
-    redirect_to(show_profile_path(params[:id]))
+    @review.job = Job.find_by(user_id: current_user, talent_id: Talent.find_by(user: @review.user))
+    @review.save!
+    redirect_to(profile_path(params['review'][:user_id]))
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:rating, :content)
+    params.require(:review).permit(:rating, :content, :user_id, :job_id)
   end
 end
 

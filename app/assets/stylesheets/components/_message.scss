@@ -19,7 +19,7 @@
   padding: 20px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
   background-color: white;
-  margin: 10px;
+  margin: 5px;
 }
 .message:last-child {
   border-bottom: none;
@@ -28,12 +28,13 @@
   flex-grow: 1;
 }
 .message-name {
-  padding-left: 10px;
-  min-width: 100px;
+  padding: 10px;
+  width: 200px;
 }
-.message-name h3 {
-  font-size: 24px;
+.message-name h4 {
+  font-size: 20px;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 .message-name p {
   font-size: 20px;
@@ -42,14 +43,15 @@
   margin-top: 5px;
 }
 .message-body p {
-  padding-left: 10px;
-  font-weight: normal;
+  padding: 10px;
+  font-weight: lighter;
   font-size: 18px;
   color: rgba(0,0,0,0.7);
 }
 .message-body {
-  padding-left: 20px;
+  padding-left: 5px;
   color: rgba(0,0,0,0.4);
+  max-width: 580px;
 }
 .message-body strong{
   color: rgba(0,0,0,0.9);
@@ -58,9 +60,8 @@
 .message-body p {
   margin: 6px 0;
 }
-.message-status h3 {
-  font-size: 24px;
-  font-weight: bold;
+.message-status h4 {
+  font-size: 20px;
 }
 .status.accepted {
   color: #04A366;
@@ -82,4 +83,8 @@
   background: rgb(255, 235, 235);
   opacity: 0;
   transition: opacity .3s linear;
+}
+
+.message {
+  border-radius: 5px;
 }
