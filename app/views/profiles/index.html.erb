@@ -1,281 +1,287 @@
-<div class="box" id="profiles-list">
-  <ul>
-  <% if params["query"] != "" && !params["query"].nil?%>
-    <% @users_one_search.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% elsif params["main-query"].nil? && params["city-query"].nil? && params["genre-query"].nil? && params%>
-    <% @all_users.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% elsif params["main-query"] == "" && params["city-query"] == "" && params["genre-query"] == ""%>
-    <% @all_users.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% elsif params["genre-query"] == "" && params["city-query"] != "" && params["main-query"] == "" %>
-    <% @users_by_city.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% elsif params["genre-query"] == "" && params["city-query"] == "" && params["main-query"] != "" %>
-    <% @users_main_talent.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-    <% @users_other_talent.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% elsif params["genre-query"] == "" && params["city-query"] != "" && params["main-query"] != "" %>
-    <% @users_by_city_and_main_main_talent.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-    <% @users_by_city_and_main_other_talent.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% elsif params["genre-query"] != "" && params["city-query"] == "" && params["main-query"] == "" %>
-    <% @users_by_genre.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% elsif params["genre-query"] != "" && params["city-query"] != "" && params["main-query"] == "" %>
-    <% @users_by_city_and_genre.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% elsif params["genre-query"] != "" && params["city-query"] == "" && params["main-query"] != "" %>
-    <% @users_by_genre_and_main_main_talent.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-    <% @users_by_genre_and_main_other_talent.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% elsif params["genre-query"] != "" && params["city-query"] != "" && params["main-query"] != "" %>
-    <% @users_by_city_genre_and_main_main_talent.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-    <% @users_by_city_genre_and_main_other_talent.each do |profile| %>
-      <%= link_to profile_path(profile) do %>
-        <li class="profile-item text-inline">
-          <div>
-            <% if profile.avatar.filename.nil? %>
-              <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
-            <% else  %>
-              <%= cl_image_tag profile.avatar, height: 72, width: 72, crop: :fill, class: "avatar" %>
-            <% end  %>
-          </div>
-          <div class="text">
-            <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
-            <%= profile.main_job %>
-            <h6><%= profile.city %></h6>
-            <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% end%>
-  </ul>
-</div>
+<div id="profiles-list">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="box no-padding">
+      <ul>
+      <% if params["query"] != "" && !params["query"].nil?%>
+        <% @users_one_search.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% elsif params["main-query"].nil? && params["city-query"].nil? && params["genre-query"].nil? && params%>
+        <% @all_users.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% elsif params["main-query"] == "" && params["city-query"] == "" && params["genre-query"] == ""%>
+        <% @all_users.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% elsif params["genre-query"] == "" && params["city-query"] != "" && params["main-query"] == "" %>
+        <% @users_by_city.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% elsif params["genre-query"] == "" && params["city-query"] == "" && params["main-query"] != "" %>
+        <% @users_main_talent.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+        <% @users_other_talent.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% elsif params["genre-query"] == "" && params["city-query"] != "" && params["main-query"] != "" %>
+        <% @users_by_city_and_main_main_talent.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+        <% @users_by_city_and_main_other_talent.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% elsif params["genre-query"] != "" && params["city-query"] == "" && params["main-query"] == "" %>
+        <% @users_by_genre.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% elsif params["genre-query"] != "" && params["city-query"] != "" && params["main-query"] == "" %>
+        <% @users_by_city_and_genre.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% elsif params["genre-query"] != "" && params["city-query"] == "" && params["main-query"] != "" %>
+        <% @users_by_genre_and_main_main_talent.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+        <% @users_by_genre_and_main_other_talent.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% elsif params["genre-query"] != "" && params["city-query"] != "" && params["main-query"] != "" %>
+        <% @users_by_city_genre_and_main_main_talent.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+        <% @users_by_city_genre_and_main_other_talent.each do |profile| %>
+          <%= link_to profile_path(profile) do %>
+            <li class="profile-item text-inline">
+              <div>
+                <% if profile.avatar.filename.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 72, width: 72, class: "avatar" %>
+                <% else  %>
+                  <%= cl_image_tag profile.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+                <% end  %>
+              </div>
+              <div class="text profile-details">
+                <h4><%= profile.first_name.capitalize%> <%= profile.last_name.upcase %> </h4>
+                <h5 class="skill-genre"><em>Main skill: </em><%= profile.main_job %> - <em>Genre: </em><%= profile.genre%><h5>
+                <h6><%= profile.city %></h6>
+                <p><%= profile.bio.slice(0, 120) unless profile.bio.nil? %>...</p>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% end%>
+      </ul>
+      </div>
+    <!-- </div> -->
+    </div>
+  </div>
