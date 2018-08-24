@@ -1,5 +1,10 @@
 <div class="container">
-  <div class="banner-profile" style="background-image: url(<%= @user.banner.url(:banner_image) %>)">
+  <div class="banner-profile">
+    <% if @user.banner.filename.nil? %>
+      <%= image_tag "noprofilepicture.png", height: 350, width: 1065%>
+    <% else  %>
+      <%= cl_image_tag @user.banner.url(:banner_image)%>
+    <% end %>
   </div>
 
   <div class="profile-page">
@@ -14,6 +19,7 @@
         <h1 class="profile-name"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}"%></h1>
         <p>
           Main skill: <span class="values"><%= @user.main_job if @user.main_job %></span> -
+          Genres: <span class="values"><%= @user.genre if @user.genre %></span> -
           Based in <span class="values"><%= @user.city.capitalize if @user.city %></span>
         </p>
       </div>
@@ -30,7 +36,7 @@
       <div class="col-xs-12 col-md-8">
         <div class="box bio">
           <h2 class="box-title">Bio :</h2>
-          <p>"<%= @user.bio %>"</p>
+          <p><%= @user.bio %></p>
         </div>
       </div>
 
