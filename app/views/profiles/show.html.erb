@@ -60,33 +60,6 @@
       </div>
     </div>
 
-<!--     <div class="row profile-content">
-      <div class="col-md-6 col-md-offset-3"> -->
-          <% unless @user.reviews.empty? %>
-        <div class="box reviews">
-            <h2>Reviews</h2>
-            <div class="index-msgs">
-              <div class="message-text">
-                <% @job.reviews.each do |review| %>
-                  <h5 class="msg-header"><strong><%= "#{review.job.user.first_name} #{review.job.user.last_name}" %></strong> - <%= message.created_at.strftime("%e %b %Y") %></h5>
-                  <p><%= review.content %></p>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-
-          <% if @user.jobs.include?(Job.find_by(:user == current_user)) %>
-            <div class="new-message">
-              <%= simple_form_for [@profile, @review] do |f| %>
-                <%= f.input :content, label: false,:input_html => {class: "test-width", :style => 'width: 100%', :rows => 5} %>
-                <%= f.hidden_field :user_id, value: params[:id] %>
-                <%= f.submit "Leave a review", class: "btn btn-success" %>
-              <% end %>
-            </div>
-          <% end %>
-          </div>
-        </div>
-      </div>
       <div class="col-xs-12">
         <div class="box map">
           <h2 class="box-title">Currently in</h2>
