@@ -170,6 +170,9 @@ authorize @job
     <% end %>
 
 <!-- IMPLEMENT AUDIO PLAYER BELOW -->
+    <div class="job-box player">
+      <iframe width="80%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/489921954%3Fsecret_token%3Ds-jDnI9&color=%2300ff9b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    </div>
 
 <!-- IMPLEMENT AUDIO PLAYER ABOVE -->
 
@@ -184,7 +187,7 @@ authorize @job
         <% end %>
       </div>
       <div class="index-msgs">
-        <div class="message">
+        <div class="message-text">
           <% @job.messages.each do |message| %>
             <h5 class="msg-header"><strong><%= message.sender %></strong> - <%= message.created_at.strftime("%e %b %Y %H:%M %p") %></h5>
             <p><%= message.content %></p>

@@ -125,10 +125,10 @@ Job.create!(talent_id: 1, user_id: e.id) # Supplier: Louis, Client: Johann
 
 j4 = Job.find_by(id: 4)
 j3 = Job.find_by(id: 3)
-Message.create(content: "Are you free?", job_id: 1)
-Message.create(content: "Do you want to play", job_id: 2)
-Message.create(content: "We produce a record next month, are you available?", job_id: 3)
-Message.create(content: "Shall we work together again?", job_id: 4)
+Message.create(content: "Are you free?", job_id: 1, sender: "#{Job.find(1).user.first_name} #{Job.find(1).user.last_name}")
+Message.create(content: "Do you want to play ?", job_id: 2, sender: "#{Job.find(2).user.first_name} #{Job.find(2).user.last_name}")
+Message.create(content: "We produce a record next month, are you available?", job_id: 3, sender: "#{Job.find(3).user.first_name} #{Job.find(3).user.last_name}")
+Message.create(content: "Shall we work together again?", job_id: 4, sender: "#{Job.find(4).user.first_name} #{Job.find(4).user.last_name}")
 
 j4.accepted = true
 j4.save
