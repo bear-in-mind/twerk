@@ -11,6 +11,7 @@ Talent.destroy_all
 Message.destroy_all
 Review.destroy_all
 User.destroy_all
+Job.destroy_all
 
 puts "Start seeding"
 
@@ -35,6 +36,7 @@ b = User.new(
   email: Faker::Internet.unique.email,
   password: "0123456",
   main_job: "Guitarist",
+  bio: "I'm a French guitar player. I play all guitars, all genres: I'm as much a fan of Michael Jackson as AC/DC !",
   genre: 'Funk, Disco, Rock, Pop'
 )
 
@@ -64,6 +66,7 @@ d = User.new(
   email: Faker::Internet.unique.email,
   password: "0123456",
   main_job: "Artist",
+  bio: "I'm a songwriter, composer, producer and vocalist. Got famous with my band Stardust with Thomas Bangalter. Open to any vocals featuring mostly on Electronic tracks.",
   genre: "Electro, House, Pop"
 )
 
@@ -77,7 +80,8 @@ e = User.new(
   email: Faker::Internet.unique.email,
   password: "0123456",
   main_job: "Keyboardist",
-  genre: "Pop, Blues, Rock, Funk"
+  genre: "Pop, Blues, Rock, Funk",
+  bio: "Hey ! I'm a keyboard player from Denmark. I'm a huge blues fan, and am quite skilled with the organ. I can ply any style and love pop as well!"
 )
 
 e.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855790/profile_pictures/johan.jpg"
@@ -91,7 +95,8 @@ f = User.new(
   email: Faker::Internet.unique.email,
   password: "0123456",
   main_job: "Mixing Engineer",
-  genre: "Electro, Pop"
+  genre: "Electro, Pop",
+  bio: "I'm a front-of-house engineer, as well as a very skilled mixer. I especially like electronic music."
 )
 
 f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/sebastien.jpg"

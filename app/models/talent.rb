@@ -2,7 +2,7 @@ class Talent < ApplicationRecord
   include PgSearch
 
   belongs_to :user
-  has_many :jobs
+  has_many :jobs, dependent: :destroy
   has_many :messages, through: :job
 
   validates :name, presence: true
