@@ -11,6 +11,12 @@ class JobsController < ApplicationController
     @my_talents.each do |talent|
       @jobs_as_supplier << talent.jobs
     end
+
+    @jobs_as_client = []
+    @my_talents.each do |talent|
+      @jobs_as_client << talent.jobs
+    end
+
     @jobs_as_supplier.flatten!
   end
 
