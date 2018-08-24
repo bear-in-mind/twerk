@@ -4,12 +4,12 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:index, :show, :edit] do
     resources :jobs, only: [:new, :create]
+    resources :reviews, only: [ :new, :create]
   end
   patch "profiles/:id", to: "profiles#update", as: "profiles_update"
   resources :jobs, only: [:show, :index, :update]
 
   resources :talents, only: [:new, :create, :edit, :update, :destroy]
-  resources :reviews, only: [ :new, :create]
   resources :experiences, only: [ :new, :create, :update, :edit, :destroy]
   resources :messages, only: [ :new, :create ]
 end

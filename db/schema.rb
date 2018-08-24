@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_24_101512) do
+ActiveRecord::Schema.define(version: 2018_08_24_101730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2018_08_24_101512) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "job_id"
+    t.index ["job_id"], name: "index_reviews_on_job_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -91,6 +93,7 @@ ActiveRecord::Schema.define(version: 2018_08_24_101512) do
   add_foreign_key "jobs", "talents"
   add_foreign_key "jobs", "users"
   add_foreign_key "messages", "jobs"
+  add_foreign_key "reviews", "jobs"
   add_foreign_key "reviews", "users"
   add_foreign_key "talents", "users"
 end

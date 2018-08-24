@@ -39,6 +39,9 @@ class ProfilesController < ApplicationController
 
   def show
     authorize current_user
+    @profile = User.find(params[:id])
+    @review = Review.new
+    @review.user_id = params[:id]
     @markers = [{ lat: @user.latitude, lng: @user.longitude }]
   end
 
