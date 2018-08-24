@@ -1,6 +1,4 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :set_supplier]
-  before_action :set_supplier, only: [:new, :create, :update]
 
   def index
     @jobs_as_client = policy_scope(Job)
@@ -21,6 +19,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @job = Job.find(params[:id])
     authorize @job
     @message = Message.new
     @supplier = @job.talent.user
@@ -31,6 +30,7 @@ class JobsController < ApplicationController
   def new
     @job = Job.new
     authorize @job
+    @supplier = User.find(params[:profile_id])
   end
 
   def create
@@ -46,21 +46,14 @@ class JobsController < ApplicationController
   end
 
   def update
+    @job = Job.find(params[:id])
     authorize @job
+    @supplier = @job.talent.user
     @job.update!(job_params)
     redirect_to job_path(@job)
   end
 
   private
-
-  def set_job
-    @job = Job.find(params[:id])
-  end
-
-  def set_supplier
-    @job = Job.find(params[:id])
-    @supplier = @job.talent.user
-  end
 
   def job_params
     params.require(:job).permit(:price, :talent_id, :audio_file, :audio_file_cache, :accepted, :completed, :paid)
