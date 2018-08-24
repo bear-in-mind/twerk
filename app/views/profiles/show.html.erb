@@ -56,13 +56,6 @@
           </div>
         </div>
       </div>
-
-      <div class="col-xs-12">
-        <div class="box map">
-          <h2 class="box-title">Currently in <span class="values"><%= @user.city.capitalize if @user.city %></span></h2>
-          <div id="map" style="width: 100%; height: 250px;  "data-markers="<%= @markers.to_json %>"></div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
