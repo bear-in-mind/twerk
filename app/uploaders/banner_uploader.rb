@@ -8,7 +8,7 @@ class BannerUploader < CarrierWave::Uploader::Base
   process convert: 'jpg'
 
   version :banner_image do
-    cloudinary_transformation width: 1000, height: 315, crop: :fill, gravity: :auto, border: "3px_solid_white"
+    cloudinary_transformation width: 1065, height: 350, crop: :fill, gravity: :auto, border: "3px_solid_white"
   end
 
 end

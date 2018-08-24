@@ -1,5 +1,10 @@
 <div class="container">
-  <div class="banner-profile" style="background-image: url(<%= @user.banner.url(:banner_image) %>)">
+  <div class="banner-profile">
+    <% if @user.banner.filename.nil? %>
+      <%= image_tag "noprofilepicture.png", height: 350, width: 1065%>
+    <% else  %>
+      <%= cl_image_tag @user.banner.url(:banner_image)%>
+    <% end %>
   </div>
 
   <div class="profile-page">
@@ -53,6 +58,13 @@
             <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936368/album_covers/quidenousdeux.jpg", height: 150, width: 150, border: '2px_solid_black') %>
             <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/pills.jpg", height: 150, width: 150, border: '2px_solid_black') %>
             <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/ours.jpg", height: 150, width: 150, border: '2px_solid_black') %>
+          </div>
+        </div>
+      </div>
+
+      <div class=" col-xs-12">
+        <div class="box map">
+          <div id="map" style="width: 100%; height: 300px;" data-markers="<%= @markers.to_json %>">
           </div>
         </div>
       </div>
