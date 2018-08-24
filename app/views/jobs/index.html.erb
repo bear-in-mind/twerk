@@ -1,10 +1,9 @@
 <div class="wrapper">
-  <div class="container">
-    <h1>My Projects</h1>
-  </div>
-  <div class="container">
-    <h3> As a supplier </h3>
 
+  <div class="container">
+
+
+    <h3> As a client </h3>
     <% if @jobs_as_client == nil %>
       <br>
       <h3> No Jobs yet!</h3>
@@ -12,6 +11,7 @@
     <% else %>
       <% @jobs_as_client.each do |job| %>
         <div class="message">
+          <%= link_to '', job_path(job.id), class: "message-link"%>
           <!-- avatar -->
           <%= cl_image_tag job.talent.user.avatar, height: 104, width: 104, class: "avatar", crop: :fill %>
           <!-- avatar -->
@@ -29,14 +29,11 @@
               <h3 class="status accepted">Accepted</h3>
             <% end %>
           </div>
-          <%= link_to '', job_path(job.id), class: "card-link"%>
         </div>
       <% end %>
     <% end %>
-  </div>
 
-  <div class="container">
-    <h3> As a client </h3>
+    <h3> As a supplier </h3>
     <% if @jobs_as_supplier == [] %>
       <br>
       <h3> No Jobs yet!</h3>
@@ -44,7 +41,7 @@
     <% else %>
       <% @jobs_as_supplier.each do |job| %>
         <div class="message">
-          <%= link_to '', job_path(job.id), class: "card-link"%>
+          <%= link_to '', job_path(job.id), class: "message-link"%>
           <!-- avatar -->
           <%= cl_image_tag job.user.avatar, height: 104, width: 104, class: "avatar", crop: :fill %>
           <!-- avatar -->
