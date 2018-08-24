@@ -5,6 +5,9 @@
 
 .job-box {
   width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
   margin: 10px;
   background-color: white;
@@ -16,6 +19,22 @@
   a {
   text-decoration: none;
   color: black;
+  }
+  button {
+    margin: 20px;
+  }
+}
+
+#price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  input.numeric {
+    width: 80px;
+  }
+  .btn {
+    margin: 10px;
   }
 }
 
@@ -32,6 +51,9 @@
   display: flex;
   // justify-content: center;
   align-items: center;
+  a:hover {
+    color: $green;
+  }
 }
 .status {
   grid-row: 2 / span 1;
@@ -40,13 +62,23 @@
 }
 
 .price {
-  grid-row: 3 / span 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-row: 3 / span 2;
   grid-column: 1 / span 1;
+  span {
+    color: $green;
+  }
 }
 
-.buttons {
-  grid-row: 4 / span 1;
-  grid-column: 1 / span 1;
+.confirmation-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  .btn {
+    margin: 20px;
+  }
 }
 
 .conversation {
@@ -56,7 +88,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .new-msg {

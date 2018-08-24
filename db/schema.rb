@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_23_113401) do
+ActiveRecord::Schema.define(version: 2018_08_23_171820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_113401) do
     t.datetime "completed"
     t.string "audio_file"
     t.boolean "accepted"
+    t.boolean "paid", default: false
     t.index ["talent_id"], name: "index_jobs_on_talent_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_113401) do
     t.text "bio"
     t.string "banner"
     t.string "main_job"
+    t.string "genre"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
