@@ -33,4 +33,19 @@ class User < ApplicationRecord
       using: {
         tsearch: { prefix: true }
       }
+
+  pg_search_scope :genre_search,
+      against: [ :genre],
+      using: {
+        tsearch: { prefix: true }
+      }
+
+  pg_search_scope :one_search,
+      against: [:first_name, :last_name, :genre, :city],
+      associated_against: {
+        talents: [ :name ]
+      },
+      using: {
+        tsearch: { prefix: true }
+      }
 end

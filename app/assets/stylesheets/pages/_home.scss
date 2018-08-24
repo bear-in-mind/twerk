@@ -47,16 +47,17 @@
 }
 
 #home-search-query {
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 0;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 0;
+  border-radius: 6px;
   border: none;
+  margin: 5px;
 }
 
 #home-search-submit {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 6px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 6px;
+  border-radius: 6px;
+}
+
+#home-search-query-nav {
+  border-radius: 6px;
+  border: none;
+  margin: 5px;
 }
