@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 2018_08_24_101730) do
     t.string "banner"
     t.string "main_job"
     t.string "genre"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
