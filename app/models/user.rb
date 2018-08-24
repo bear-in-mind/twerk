@@ -19,6 +19,9 @@ class User < ApplicationRecord
   mount_uploader :avatar, PhotoUploader
   mount_uploader :banner, BannerUploader
 
+  geocoded_by :city
+  after_validation :geocode, if: :will_save_change_to_city?
+
   pg_search_scope :global_search,
       against: [ :first_name, :last_name],
       associated_against: {

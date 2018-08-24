@@ -39,6 +39,7 @@ class ProfilesController < ApplicationController
 
   def show
     authorize current_user
+    @markers = [{ lat: @user.latitude, lng: @user.longitude }]
   end
 
   def edit

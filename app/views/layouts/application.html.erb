@@ -16,7 +16,9 @@
     <div class="full-pages">
       <%= yield %>
       <%= javascript_include_tag 'application' %>
+      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js" %>
       <%= javascript_pack_tag 'application' %>
+      <%= javascript_pack_tag "map" %>
     </div>
     <%= render 'layouts/footer' %>
   </body>
