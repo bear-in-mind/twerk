@@ -3,6 +3,14 @@
   list-style: none;
 }
 
+ul {
+  padding-left: 0px;
+}
+
+.no-padding {
+  padding: 3px 16px;
+}
+
 .profile-item {
   display: flex;
   justify-content: flex-start;
@@ -10,15 +18,19 @@
   // height: 200px;
   border-radius: 4px;
   margin: 16px 0;
-  padding: 8px 16px;
+  padding: 16px 25px;
   background-color: rgba(201, 241, 178, 0);
-  // border-bottom: 1px solid $light-gray;
+  border-bottom: 1px solid rgb(200, 200, 200);
 
   transition: background-color .15s linear ;
 
   &:hover {
     background-color: rgba(201, 241, 178, 1);
   }
+}
+
+.profile-details {
+  margin-left: 15px;
 }
 
 .talent-text {
@@ -30,6 +42,3 @@
   height: auto;
   resize: none;
 }
-
-
-
