@@ -10,38 +10,44 @@ authorize @job
 <!-- DISPLAYS THE CLIENT'S INFOS -->
     <div class="job-box supplier">
       <% if current_user == @client %>
-        <%= link_to profile_path(@job.talent.user) do %>
-          <div>
-            <% if @supplier.avatar.filename.nil? %>
-            <%= image_tag "noprofilepicture.png", height: 104, width: 104, class: "avatar" %>
-            <% else  %>
-            <%= cl_image_tag @supplier.avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
-            <% end  %>
+        <h4 class="working">You're working with</h4>
+        <div class="supplier-content">
+          <%= link_to profile_path(@job.talent.user) do %>
+            <div>
+              <% if @supplier.avatar.filename.nil? %>
+              <%= image_tag "noprofilepicture.png", height: 104, width: 104, class: "avatar" %>
+              <% else  %>
+              <%= cl_image_tag @supplier.avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
+              <% end  %>
+            </div>
+          <% end %>
+          <div class="talent-text">
+            <h4><%= link_to "#{@supplier.first_name.capitalize} #{@supplier.last_name.upcase}", profile_path(@job.talent.user)%></h4>
+            <%= @supplier.main_job %>
+            <h6><%= @supplier.city %></h6>
+            <p><%= @supplier.bio.slice(0, 120) unless @supplier.bio.nil? %>...</p>
           </div>
-        <% end %>
-        <div class="talent-text">
-          <h4><%= link_to "#{@supplier.first_name.capitalize} #{@supplier.last_name.upcase}", profile_path(@job.talent.user)%></h4>
-          <%= @supplier.main_job %>
-          <h6><%= @supplier.city %></h6>
-          <p><%= @supplier.bio.slice(0, 120) unless @supplier.bio.nil? %>...</p>
         </div>
 
 <!-- DISPLAYS THE SUPPLIER'S INFOS -->
       <% elsif current_user == @supplier %>
-        <%= link_to profile_path(@job.user) do %>
-          <div>
-            <% if @client.avatar.filename.nil? %>
-            <%= image_tag "noprofilepicture.png", height: 104, width: 104, class: "avatar" %>
-            <% else  %>
-            <%= cl_image_tag @client.avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
-            <% end  %>
+        <h4 class="working">You're working for</h4>
+        <div class="supplier-content">
+          <%= link_to profile_path(@job.user) do %>
+            <div>
+              <% if @client.avatar.filename.nil? %>
+              <%= image_tag "noprofilepicture.png", height: 104, width: 104, class: "avatar" %>
+              <% else  %>
+              <%= cl_image_tag @client.avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
+              <% end  %>
+            </div>
+          <% end %>
+          <div class="talent-text">
+            <h4><%= link_to "#{@client.first_name.capitalize} #{@client.last_name.upcase}", profile_path(@job.talent.user)%></h4>
+            <%= @client.main_job %>
+            <h6><%= @client.city %></h6>
+            <p><%= @client.bio.slice(0, 120) unless @client.bio.nil? %>...</p>
           </div>
-        <% end %>
-        <div class="talent-text">
-          <h4><%= link_to "#{@client.first_name.capitalize} #{@client.last_name.upcase}", profile_path(@job.talent.user)%></h4>
-          <%= @client.main_job %>
-          <h6><%= @client.city %></h6>
-          <p><%= @client.bio.slice(0, 120) unless @client.bio.nil? %>...</p>
         </div>
       <% end %>
     </div>
@@ -54,7 +60,9 @@ authorize @job
         <% elsif @job.completed %>
           <h5 class="text-success">Work is done ! You can proceed to payment below.</h5>
         <% elsif @job.accepted %>
-          <h5 class="text-success"><%= @supplier.first_name.capitalize %> has accepted your request !</h5>
+          <h5 class="text-success">You accepted <%= @supplier.first_name.capitalize %>'s proposition, let's get to work !</h5>
+        <% elsif @job.accepted.nil? && @job.price != 0 %>
+          <h5 class="text-muted"><%= "#{@supplier.first_name}" %> awaits your response.</h5>
         <% elsif @job.accepted.nil? %>
           <h5 class="text-muted">Your request is still pending.</h5>
         <% else %>
@@ -73,7 +81,7 @@ authorize @job
           <h5 class="text-success">Congrats ! Work is over. You will receive your payment soon.</h5>
 
         <% elsif @job.accepted %>
-          <h5 class="text-success"><%= @client.first_name.capitalize %> has accepted your proposition ! </h5>
+          <h5 class="text-success"><%= @client.first_name.capitalize %> has accepted your proposition ! Let's get to work ! </h5>
 
         <% elsif @job.accepted.nil? && @job.price == 0 %>
           <h5 class="text-primary">You have received a request from <%= "#{@client.first_name} #{@client.last_name}" %></h5>

@@ -13,7 +13,7 @@
       <div class="profile-details">
         <h1 class="profile-name"><%= "#{@user.first_name.capitalize} #{@user.last_name.capitalize}"%></h1>
         <p>
-          Main skill: <span class="values"><%= @user.main_job if @user.main_job %></span> -
+          <span class="values"><%= @user.main_job if @user.main_job %></span> -
           Based in <span class="values"><%= @user.city.capitalize if @user.city %></span>
         </p>
       </div>
