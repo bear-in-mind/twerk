@@ -134,13 +134,14 @@ authorize @job
             <h4> <%="You paid"%> <span><%= "#{@job.price} €" %></span> to <%= "#{@supplier.first_name.capitalize}" %></h4>
 
           <% elsif @job.completed %>
-            <h4> <%="You paid"%> <span><%= "#{@job.price} €" %></span> to <%= "#{@supplier.first_name.capitalize}" %></h4>
+            <h4> <%="Please pay"%> <span><%= "#{@job.price} €" %></span> to <%= "#{@supplier.first_name.capitalize}" %></h4>
 
             <div class= "confirmation-btn">
               <%= simple_form_for @job do |f| %>
                 <%= f.hidden_field :paid, value: true %>
                 <%= f.submit "Pay", class: "btn btn-success"  %>
               <% end %>
+              <%= link_to "Leave a review", profile_path(@supplier), class: "btn btn-primary" %>
             </div>
 
           <% elsif @job.accepted && !@job.completed %>
